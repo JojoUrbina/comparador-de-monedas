@@ -25,7 +25,7 @@ function addCeldaAFila(text, tr, moneda, imagen) {
 }
 
 async function actualizarMontos(monto) {
-  const res = await fetch("divisas.json");
+  const res = await fetch("https://open.er-api.com/v6/latest/EUR");
   const data = await res.json();
   const tarifas = data.rates;
   for (const tarifa in tarifas) {
