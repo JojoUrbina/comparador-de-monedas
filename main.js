@@ -1,7 +1,6 @@
 const templateRow = document.getElementById("template-row").content;
 const tbody = document.querySelector("tbody");
 const inputMonto = document.querySelector("#monto");
-document.addEventListener("DOMContentLoaded", (e) => actualizarMontos());
 
 function addCeldaAFila(text, tr, moneda, imagen) {
   const td = document.createElement("td");
@@ -59,7 +58,6 @@ async function cargarDatos() {
       addCeldaAFila(Object.keys(moneda.currencies)[0], tr);
       addCeldaAFila(moneda.name.common, tr);
       addCeldaAFila(Object.values(moneda.languages)[0], tr);
-
       addCeldaAFila(moneda.flags.alt, tr, "", moneda.flags.png);
       addCeldaAFila("ver mas", tr, "", "");
       tbody.appendChild(tr);
@@ -67,6 +65,8 @@ async function cargarDatos() {
       //console.log(moneda.name.common, "No tiene currencies");
     }
   }
+  actualizarMontos()
+
   inputMonto.addEventListener("input", (e) => {
     const monto = Number(inputMonto.value);
     actualizarMontos(monto);
