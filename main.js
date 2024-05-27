@@ -39,7 +39,7 @@ async function actualizarMontos(monto) {
 }
 
 async function cargarDatos() {
-  const res = await fetch("https://restcountries.com/v3.1/all");
+  const res = await fetch("paises.json");
   const data = await res.json();
   const dataOrdenada = [...data].sort((a, b) => {
     if (a.name.common < b.name.common) {
