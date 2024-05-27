@@ -1,4 +1,3 @@
-const templateRow = document.getElementById("template-row").content;
 const tbody = document.querySelector("tbody");
 const inputMonto = document.querySelector("#monto");
 
@@ -18,7 +17,6 @@ function addCeldaAFila(text, tr, moneda, imagen) {
     img.classList.add("img-thumbnail");
 
     td.appendChild(img);
-    console.log("entro a img");
   }
 
   tr.appendChild(td);
@@ -33,43 +31,43 @@ async function actualizarMontos(monto) {
     for (const elemento of $tdEuros) {
       elemento.textContent = parseFloat(
         (tarifas[tarifa] * (monto || 1)).toFixed(2)
-      );
+      ) + "$";
     }
   }
 }
 
 async function cargarDatos() {
-  const res = await fetch("paises.json");
-  const data = await res.json();
-  const dataOrdenada = [...data].sort((a, b) => {
-    if (a.name.common < b.name.common) {
-      return -1;
-    }
-    if (a.name.common > b.name.common) {
-      return 1;
-    }
-    return 0;
-  });
+  try {
+    const response = await fetch("paises.json");
 
-  for (const moneda of data) {
-    if (moneda.currencies) {
-      const tr = document.createElement("tr");
-      addCeldaAFila(1, tr, Object.keys(moneda.currencies)[0]);
-      addCeldaAFila(Object.keys(moneda.currencies)[0], tr);
-      addCeldaAFila(moneda.name.common, tr);
-      addCeldaAFila(Object.values(moneda.languages)[0], tr);
-      addCeldaAFila(moneda.flags.alt, tr, "", moneda.flags.png);
-      addCeldaAFila("ver mas", tr, "", "");
-      tbody.appendChild(tr);
-    } else {
-      //console.log(moneda.name.common, "No tiene currencies");
+    if (!response.ok) {
+      throw new Error("Network response was not ok " + response.statusText);
     }
+    const data = await response.json();
+
+    for (const moneda of data) {
+      if (moneda.currencies) {
+        const tr = document.createElement("tr");
+        addCeldaAFila(1, tr, Object.keys(moneda.currencies)[0]);
+        addCeldaAFila(Object.keys(moneda.currencies)[0], tr);
+        addCeldaAFila(moneda.currencies[Object.keys(moneda.currencies)[0]].name, tr);
+        addCeldaAFila(moneda.translations.spa.common, tr);
+        addCeldaAFila(Object.values(moneda.languages)[0], tr);
+        addCeldaAFila(moneda.flags.alt, tr, "", moneda.flags.png);
+        addCeldaAFila("ver mas", tr, "", "");
+        tbody.appendChild(tr);
+      } else {
+        //console.log(moneda.name.common, "No tiene currencies");
+      }
+    }
+    actualizarMontos();
+
+    inputMonto.addEventListener("input", (e) => {
+      const monto = Number(inputMonto.value);
+      actualizarMontos(monto);
+    });
+  } catch (error) {
+    console.error("Fetch error: ", error);
   }
-  actualizarMontos()
-
-  inputMonto.addEventListener("input", (e) => {
-    const monto = Number(inputMonto.value);
-    actualizarMontos(monto);
-  });
 }
 cargarDatos();
