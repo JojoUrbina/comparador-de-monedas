@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="assets/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="assets/dist/css/bootstrap.min.css.map" rel="stylesheet" />
+
+
+    <!-- Custom styles for this template -->
+    <script src="main.js" defer></script>
+    <link rel="stylesheet" href="styles.css">
+    <title>Proyecto Final</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="nav-scroller py-1 mb-3 mt-3 border-bottom border-top">
+        <nav class="nav justify-content-around">
+          <div class="nav justify-content-start">
+            <a class="nav-item nav-link link-body-emphasis" href="#">LOGO</a>
+          </div>
+          <div class="nav justify-content-end">
+            <a class="nav-item nav-link link-body-emphasis" href="#">Inicio</a>
+            <a class="nav-item nav-link link-body-emphasis" href="#"
+              >Comparador</a
+            >
+            <a class="nav-item nav-link link-body-emphasis" href="#"
+              >Contactanos</a
+            >
+          </div>
+        </nav>
+      </div>
+    </div>
+    <header>
+      <div class="px-4 py-4 my-5 text-center">
+        <img
+          class="d-block mx-auto mb-4 rounded-5"
+          src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Flag_of_the_United_Nations.svg/300px-Flag_of_the_United_Nations.svg.png"
+          alt=""
+          width="72"
+          height="57"
+        />
+        <h1 class="display-5 fw-bold text-body-emphasis">
+          Comparador de monedas
+        </h1>
+        <div class="col-lg-6 mx-auto">
+          <p class="lead mb-4">
+            Nuestra aplicación de Comparador de Países te permite explorar y
+            comparar información de la moneda e informacion detallada sobre
+            diversos países del mundo. Obtén datos actualizados y precisos sobre
+            cada nación.
+          </p>
+        </div>
+      </div>
+    </header>
+    <main>
+      <div class="container w-50">
+        <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+          <div class="input-group input-group-md">
+            <span
+              class="input-group-text btn-outline-primary"
+              id="inputGroup-sizing-md"
+              >Monto</span
+            >
+            <input id="monto"
+              placeholder="Escribe un monto"
+              type="number"
+              min="0"
+              class="form-control"
+            />
+          </div>
+          <select class="form-select" aria-label="Default select example">
+            <option selected>Elige un pais</option>
+            <option value="1">Venezuela</option>
+            <option value="2">Francia</option>
+            <option value="3">Three</option>
+          </select>
+        </div>
+      </div>
+      <div class="container mt-5 w-75">
+        <div class="table-responsive rounded-top-1">
+          <table class="table table-hover table-sm">
+            <thead class="table-light">
+              <tr >
+                <th scope="col">Monto</th>
+                <th scope="col">Divisa</th>
+                <th scope="col">Pais</th>
+                <th scope="col">Lenguaje</th>
+                <th scope="col">Bandera</th>
+                <th scope="col">Link</th>
+
+              </tr>
+            </thead>
+            <tbody>
+              <!-- Template Row-->
+              <template id="template-row">
+                <tr >
+                  <td>alguna divisa</td>
+                  <td>algun monto</td>
+                  <td>algun pais</td>
+                  <td>algun lenguaje</td>
+                  <td>alguna bandera</td>
+                </tr>
+              </template>
+            </tbody >
+          </table>
+        </div>
+      </div>
+    </main>
+    <noscript>
+      Tu navegador no soporta javascript
+    </noscript>
+
+  </body>
+</html>

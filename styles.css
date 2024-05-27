@@ -1,0 +1,10 @@
+a:hover{
+    text-decoration: none;
+    border: none;
+}
+td{
+    max-width: 4em !important;
+}
+.bandera{
+    width: 4em;
+}
