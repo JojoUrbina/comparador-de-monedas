@@ -15,7 +15,7 @@ inputMonto.addEventListener("input", (e) => {
   actualizarMontos(tarifaActual, montoActual);
 });
 seleccionarPais.addEventListener("change", (e) => {
-  actualizarMontos(e.target.value);
+  actualizarMontos(e.target.value,montoActual);
 });
 
 async function actualizarMontos(tarifaSeleccionada, montoInput) {
