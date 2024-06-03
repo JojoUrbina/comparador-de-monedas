@@ -1,6 +1,7 @@
 const inputMonto = document.querySelector("#monto");
 const seleccionarPais = document.querySelector("#seleccionarPais");
 const tbody = document.querySelector("tbody");
+const template = document.querySelector("template").content;
 const fragment = document.createDocumentFragment();
 let tarifaActual = "EUR";
 let montoActual = 1
