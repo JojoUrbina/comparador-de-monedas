@@ -43,7 +43,7 @@ async function cargarDatos() {
 
 console.log(tbody);*/
 //------------------------------------------------
-
+/*
 let monto = 100;
 const eur = 1
 const eurUsd = 1.084277;
@@ -72,7 +72,7 @@ console.log(`${monto} $monedaElegida equivalen a ${monedaElegidaUsd} dolares`);
 const USDARS = 864.75;
 const USDGBP = 0.785489;
 const ARSUSD = 0.001156;
-
+*/
 /*const divisas = {
   "EUR": 1,
   "AED": 3.982002,
