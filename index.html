@@ -6,10 +6,11 @@
     <link href="assets/dist/css/bootstrap.min.css" rel="stylesheet" />
     <link href="assets/dist/css/bootstrap.min.css.map" rel="stylesheet" />
 
-
     <!-- Custom styles for this template -->
     <script src="main.js" defer></script>
-    <link rel="stylesheet" href="styles.css">
+    <script src="filtrarLanguages.js" defer></script>
+
+    <link rel="stylesheet" href="styles.css" />
     <title>Proyecto Final</title>
   </head>
   <body>
@@ -62,18 +63,20 @@
               id="inputGroup-sizing-md"
               >Monto</span
             >
-            <input id="monto"
+            <input
+              id="monto"
               placeholder="Escribe un monto"
               type="number"
               min="0"
               class="form-control"
             />
           </div>
-          <select class="form-select" aria-label="Default select example">
+          <select
+            id="seleccionarPais"
+            class="form-select"
+            aria-label="Default select example"
+          >
             <option selected>Elige un pais</option>
-            <option value="1">Venezuela</option>
-            <option value="2">Francia</option>
-            <option value="3">Three</option>
           </select>
         </div>
       </div>
@@ -81,7 +84,7 @@
         <div class="table-responsive rounded-top-1">
           <table class="table table-hover table-sm">
             <thead class="table-light">
-              <tr >
+              <tr>
                 <th scope="col">Monto</th>
                 <th scope="col">Divisa</th>
                 <th scope="col">Moneda</th>
@@ -89,18 +92,30 @@
                 <th scope="col">Lenguaje</th>
                 <th scope="col">Bandera</th>
                 <th scope="col">Link</th>
-
               </tr>
             </thead>
-            <tbody>                          
-            </tbody >
+            <tbody></tbody>
           </table>
         </div>
       </div>
     </main>
-    <noscript>
-      Tu navegador no soporta javascript
-    </noscript>
-
+    <noscript> Tu navegador no soporta javascript </noscript>
+    <template>
+      <tr>
+        <td class="py-2">0</td>
+        <td class="py-2">MDL</td>
+        <td class="py-2">Moldovan leu</td>
+        <td class="py-2">Moldavia</td>
+        <td class="py-2">Romanian</td>
+        <td class="py-2">
+          <img
+            src="https://flagcdn.com/w320/md.png"
+            alt="The flag of Moldova is composed of three equal vertical bands of blue, yellow and red, with the national coat of arms centered in the yellow band."
+            class="bandera img-thumbnail"
+          />
+        </td>
+        <td class="py-2">ver mas</td>
+      </tr>
+    </template>
   </body>
 </html>

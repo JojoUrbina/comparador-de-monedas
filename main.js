@@ -1,73 +1,92 @@
-const tbody = document.querySelector("tbody");
 const inputMonto = document.querySelector("#monto");
+const seleccionarPais = document.querySelector("#seleccionarPais");
+const tbody = document.querySelector("tbody");
+const fragment = document.createDocumentFragment();
+let tarifaActual = "EUR";
+let montoActual = 1
 
-function addCeldaAFila(text, tr, moneda, imagen) {
-  const td = document.createElement("td");
-  td.textContent = text;
-  td.classList.add("py-2");
-  if (moneda) {
-    td.classList.add(moneda);
-  }
-  if (imagen) {
-    const img = document.createElement("img");
-    td.textContent = "";
-    img.src = imagen;
-    img.alt = text;
-    img.classList.add("bandera");
-    img.classList.add("img-thumbnail");
+document.addEventListener("DOMContentLoaded", () => {
+  cargarDatos();
+});
 
-    td.appendChild(img);
-  }
+inputMonto.addEventListener("input", (e) => {
+  montoActual = Number(e.target.value);
+  actualizarMontos(tarifaActual, montoActual);
+});
+seleccionarPais.addEventListener("change", (e) => {
+  actualizarMontos(e.target.value);
+});
 
-  tr.appendChild(td);
-}
-
-async function actualizarMontos(monto) {
-  const res = await fetch("https://open.er-api.com/v6/latest/EUR");
+async function actualizarMontos(tarifaSeleccionada, montoInput) {
+  tarifaActual = tarifaSeleccionada
+  const res = await fetch(`https://open.er-api.com/v6/latest/${tarifaActual}`);
   const data = await res.json();
   const tarifas = data.rates;
+
   for (const tarifa in tarifas) {
-    const $tdEuros = document.getElementsByClassName(`${tarifa}`);
-    for (const elemento of $tdEuros) {
-      elemento.textContent = parseFloat(
-        (tarifas[tarifa] * (monto || 1)).toFixed(2)
-      ) + "$";
+    const celdasMonto = document.getElementsByClassName(`${tarifa}`);
+    for (const celda of celdasMonto) {
+      celda.textContent =Math.min
+        (tarifas[tarifa] * (montoInput || 1) ).toFixed(2) + "$";
     }
   }
+}
+
+function renderizarPaises(data) {
+  for (const { currencies, translations, languages, flags, name } of data) {
+    if (currencies) {
+      const divisa = Object.keys(currencies)[0];
+      const moneda = currencies[Object.keys(currencies)[0]].name;
+      const pais = translations.spa.common;
+      const lenguaje = Object.values(languages)[0];
+      const srcBandera = flags.png;
+      const altBandera = flags.alt;
+
+      const filasClonadas = template.cloneNode(true);
+      const celdasClonadas = filasClonadas.querySelectorAll("td");
+
+      celdasClonadas[0].classList.add(divisa);
+      celdasClonadas[1].textContent = divisa;
+      celdasClonadas[2].textContent = moneda;
+      celdasClonadas[3].textContent = pais;
+      celdasClonadas[4].textContent = lenguaje;
+      celdasClonadas[5].querySelector("img").src = srcBandera;
+      celdasClonadas[5].querySelector("img").alt = altBandera;
+      celdasClonadas[6].textContent = "ver mas";
+      fragment.appendChild(filasClonadas);
+    } else {
+      //console.log(name.common, "No tiene currencies"); //Paises sin moneda
+    }
+  }
+  tbody.appendChild(fragment);
 }
 
 async function cargarDatos() {
-  try {
-    const response = await fetch("paises.json");
-
-    if (!response.ok) {
-      throw new Error("Network response was not ok " + response.statusText);
-    }
-    const data = await response.json();
-
-    for (const moneda of data) {
-      if (moneda.currencies) {
-        const tr = document.createElement("tr");
-        addCeldaAFila(1, tr, Object.keys(moneda.currencies)[0]);
-        addCeldaAFila(Object.keys(moneda.currencies)[0], tr);
-        addCeldaAFila(moneda.currencies[Object.keys(moneda.currencies)[0]].name, tr);
-        addCeldaAFila(moneda.translations.spa.common, tr);
-        addCeldaAFila(Object.values(moneda.languages)[0], tr);
-        addCeldaAFila(moneda.flags.alt, tr, "", moneda.flags.png);
-        addCeldaAFila("ver mas", tr, "", "");
-        tbody.appendChild(tr);
-      } else {
-        //console.log(moneda.name.common, "No tiene currencies");
-      }
-    }
-    actualizarMontos();
-
-    inputMonto.addEventListener("input", (e) => {
-      const monto = Number(inputMonto.value);
-      actualizarMontos(monto);
-    });
-  } catch (error) {
-    console.error("Fetch error: ", error);
-  }
+  const response = await fetch("paises.json");
+  const data = await response.json();
+  renderizarPaises(data);
+  agregarDatosASelect(data);
+  actualizarMontos(tarifaActual);
 }
-cargarDatos();
+
+function agregarDatosASelect(data) {
+  data.sort((a, b) => {
+    if (a.name.common > b.name.common) {
+      return 1;
+    } else if (a.name.common < b.name.common) {
+      return -1;
+    } else {
+      return 0;
+    }
+  });
+
+  for (const { currencies, translations } of data)
+    if (currencies) {
+      const divisa = Object.keys(currencies)[0];
+      const pais = translations.spa.common;
+      const opcion = document.createElement("option");
+      opcion.value = divisa;
+      opcion.textContent = pais;
+      seleccionarPais.appendChild(opcion);
+    }
+}
