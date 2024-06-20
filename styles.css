@@ -4,32 +4,8 @@
   box-sizing: border-box;
   transition: all ease-in-out 250m;
 }
-.btn-filtro {
-  margin-left: 2rem !important;
-}
-a:hover {
-  text-decoration: none;
-  border: none;
-  cursor: pointer;
-}
 
-td {
-  max-width: 150px;
-}
-
-.bandera {
-  width: 4em;
-  transition: transform 0.3s ease-in-out;
-}
-.bandera:hover {
-  transform: scale(2.5);
-}
-
-#logo {
-  width: 2.5rem;
-}
-
-/*inicio del side menu*/
+/*#region inicio del side menu*/
 
 .dropdown-toggle {
   outline: 0;
@@ -85,11 +61,61 @@ td {
 .scrollarea {
   overflow-y: auto;
 }
-/*fin del side menu*/
+/*#endregion del side menu*/
+
+/*#region Estilos de las estrellas*/
+.estrella {
+  position: relative;
+  top: -2px;
+  width: 15px;
+  transition: fill-opacity 0.2s ease-in-out;
+  margin-right: 10px !important;
+}
+
+.estrella-invicible {
+  fill-opacity: 0;
+}
+
+.estrella-opaca {
+  fill-opacity: 0.5;
+}
+
+.estrella-seleccionada {
+  fill-opacity: 1;
+}
+
+.estrella {
+  fill-opacity: 1;
+}
+/*#endregion*/
+
+a:hover {
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+}
+
+td {
+  max-width: 150px;
+}
+
+.bandera {
+  width: 4em;
+  transition: transform 0.3s ease-in-out;
+}
+.bandera:hover {
+  transform: scale(2.5);
+}
+
+#logo {
+  width: 2.5rem;
+}
 button svg {
   width: 8px;
 }
-
+.btn-filtro {
+  margin-left: 2rem !important;
+}
 .btn-ordenar {
   background-color: transparent;
   border: none;
@@ -97,30 +123,11 @@ button svg {
   margin-left: 0.2rem;
 }
 
-.estrella{
-  position: relative;
-  top: -2px;
-  width: 15px;
-  transition: fill-opacity 0.2s ease-in-out;
-  margin-right: 10px !important;
-}
-.estrella-invicible{
-  fill-opacity: 0;
-}
-.estrella-opaca {
-  fill-opacity: 0.5;
-}
-.estrella-seleccionada{
-  fill-opacity: 1;
-}
-.estrella:hover {
-  fill-opacity: 1;
-}
 @media (max-width: 768px) {
   th {
     min-width: 5.5rem;
   }
   th:first-child {
-    min-width: auto; 
+    min-width: auto;
   }
 }

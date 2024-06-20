@@ -24,7 +24,7 @@ import {
 import {
   configurarEventosDeFiltro,
   configurarEventosDeOrdenar,
-  configurarEfectoHoverEnEstrellas,
+  
 } from "./modules/configurarEventListener.js";
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -35,6 +35,7 @@ export const estado = {
   dataPaisesPorDefecto: [],
   dataPaisesFiltrados: null,
   dataPaisesActual: [],
+  dataPaisesFavoritos: [],
 };
 
 async function iniciarApp() {
@@ -99,7 +100,17 @@ function ejecutarLosEventListener() {
       estado.dataPaisesFiltrados = null;
       renderizarTabla(estado.dataPaisesActual);
     });
+  
+/* 
+  function agregarPaisFavorito(dataPaises) {
+    const estrellas = document.querySelectorAll(".estrella");
+    estrellas.forEach((estrella) => {
+      estrella.addEventListener("click", (e) => {
+      const index = dataPaises.findIndex((pais)=>pais.nombrePais === estrella.dataset.btnValor)
 
-
-  configurarEfectoHoverEnEstrellas()
+       console.log(index);
+      });
+    });
+  }
+  agregarPaisFavorito(estado.dataPaisesActual) */
 }

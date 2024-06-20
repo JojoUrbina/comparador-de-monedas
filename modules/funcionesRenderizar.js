@@ -49,11 +49,23 @@ export function renderizarTabla(data) {
     importePais,
     paisFavorito,
   } of data) {
-    const filasClonadas = template.cloneNode(true);
-    const celdasClonadas = filasClonadas.querySelectorAll("td");
+    const templateClonado = template.cloneNode(true);
+    const filaClonada = templateClonado.querySelector("tr")
+    const celdasClonadas = templateClonado.querySelectorAll("td");
     const estrella = celdasClonadas[0].querySelector("svg");
 
-    estrella.classList.add(`${paisFavorito ? "estrella-seleccionada":"estrella-invicible"}`);
+    filaClonada.addEventListener("mouseover", () => {
+      estrella.classList.add("estrella-opaca");
+    });
+    filaClonada.addEventListener("mouseout", () => {
+      estrella.classList.remove("estrella-opaca");
+    });
+    
+    
+    estrella.classList.add(
+      `${paisFavorito ? "estrella-seleccionada" : "estrella-invicible"}`
+    );
+    estrella.dataset.btnValor = nombrePais;
     celdasClonadas[1].textContent = importePais + " " + simboloMonedaPais;
     celdasClonadas[1].classList.add(divisaPais);
     celdasClonadas[2].textContent = divisaPais;
@@ -63,7 +75,7 @@ export function renderizarTabla(data) {
     celdasClonadas[6].querySelector("img").src = srcBanderaPais;
     celdasClonadas[6].querySelector("img").alt = altBanderaPais;
     celdasClonadas[7].textContent = "ver mas";
-    fragment.appendChild(filasClonadas);
+    fragment.appendChild(templateClonado);
   }
   tbody.appendChild(fragment);
 }
