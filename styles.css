@@ -16,7 +16,7 @@ a:hover {
 
 td,
 th {
-  max-width: 4em !important;
+  max-width: 150px
 }
 .bandera {
   width: 4em;
