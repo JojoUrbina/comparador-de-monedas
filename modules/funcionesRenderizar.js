@@ -80,7 +80,7 @@ export function renderizarFiltros(categoria, datos) {
     //Para aplicar un efecto tipo hover
     elementoAClonado.addEventListener("mouseover", () => {
       if (categoria === "region") {
-        elementoAClonado.textContent = `${dato} - Conformado por ${cantidad} países`;
+        elementoAClonado.textContent = `${dato} - ${cantidad} países`;
       } else {
         elementoAClonado.textContent = `${dato} - Usado en ${cantidad} países`;
       }
