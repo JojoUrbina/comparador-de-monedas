@@ -24,7 +24,6 @@ import {
 import {
   configurarEventosDeFiltro,
   configurarEventosDeOrdenar,
-  
 } from "./modules/configurarEventListener.js";
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -100,17 +99,18 @@ function ejecutarLosEventListener() {
       estado.dataPaisesFiltrados = null;
       renderizarTabla(estado.dataPaisesActual);
     });
-  
-/* 
-  function agregarPaisFavorito(dataPaises) {
-    const estrellas = document.querySelectorAll(".estrella");
-    estrellas.forEach((estrella) => {
-      estrella.addEventListener("click", (e) => {
-      const index = dataPaises.findIndex((pais)=>pais.nombrePais === estrella.dataset.btnValor)
 
-       console.log(index);
-      });
-    });
-  }
-  agregarPaisFavorito(estado.dataPaisesActual) */
+  document.querySelector("tbody").addEventListener("click", (e) => {
+    const index = estado.dataPaisesActual.findIndex(
+      (pais) => pais.nombrePais === e.srcElement.dataset.btnValor
+    );
+    if (index !== -1) {
+      if (estado.dataPaisesActual[index].paisFavorito === false) {
+        estado.dataPaisesActual[index].paisFavorito = true;
+      }else{
+        estado.dataPaisesActual[index].paisFavorito = false;
+      }
+      renderizarTabla(estado.dataPaisesActual);
+    }
+  });
 }

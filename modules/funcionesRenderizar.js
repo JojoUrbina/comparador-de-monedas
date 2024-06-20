@@ -50,9 +50,10 @@ export function renderizarTabla(data) {
     paisFavorito,
   } of data) {
     const templateClonado = template.cloneNode(true);
-    const filaClonada = templateClonado.querySelector("tr")
+    const filaClonada = templateClonado.querySelector("tr");
     const celdasClonadas = templateClonado.querySelectorAll("td");
     const estrella = celdasClonadas[0].querySelector("svg");
+    const btnEstrella = estrella.querySelector("path")
 
     filaClonada.addEventListener("mouseover", () => {
       estrella.classList.add("estrella-opaca");
@@ -60,12 +61,11 @@ export function renderizarTabla(data) {
     filaClonada.addEventListener("mouseout", () => {
       estrella.classList.remove("estrella-opaca");
     });
-    
-    
+
     estrella.classList.add(
       `${paisFavorito ? "estrella-seleccionada" : "estrella-invicible"}`
     );
-    estrella.dataset.btnValor = nombrePais;
+    btnEstrella.dataset.btnValor = nombrePais;
     celdasClonadas[1].textContent = importePais + " " + simboloMonedaPais;
     celdasClonadas[1].classList.add(divisaPais);
     celdasClonadas[2].textContent = divisaPais;
@@ -78,6 +78,7 @@ export function renderizarTabla(data) {
     fragment.appendChild(templateClonado);
   }
   tbody.appendChild(fragment);
+ 
 }
 
 export function renderizarFiltros(categoria, datos) {
