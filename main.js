@@ -101,16 +101,19 @@ function ejecutarLosEventListener() {
     });
 
   document.querySelector("tbody").addEventListener("click", (e) => {
-    const index = estado.dataPaisesActual.findIndex(
-      (pais) => pais.nombrePais === e.srcElement.dataset.btnValor
-    );
-    if (index !== -1) {
-      if (estado.dataPaisesActual[index].paisFavorito === false) {
-        estado.dataPaisesActual[index].paisFavorito = true;
-      }else{
-        estado.dataPaisesActual[index].paisFavorito = false;
+    const btnValor = e.srcElement.dataset.btnValor;
+    if (btnValor) {
+      const index = estado.dataPaisesActual.findIndex(
+        (pais) => pais.nombrePais === btnValor
+      );
+
+      if (index !== -1) {
+        estado.dataPaisesActual[index].paisFavorito
+          ? (estado.dataPaisesActual[index].paisFavorito = false)
+          : (estado.dataPaisesActual[index].paisFavorito = true);
+
+        renderizarTabla(estado.dataPaisesActual);
       }
-      renderizarTabla(estado.dataPaisesActual);
     }
   });
 }
