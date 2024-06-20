@@ -64,6 +64,13 @@
 /*#endregion del side menu*/
 
 /*#region Estilos de las estrellas*/
+#estrella-th{
+  position: relative;
+  top: -2px;
+  width: 15px;
+  fill-opacity: 1;
+  margin-right: 10px !important;
+}
 .estrella {
   position: relative;
   top: -2px;
@@ -84,7 +91,7 @@
   fill-opacity: 1;
 }
 
-.estrella {
+.estrella:hover{
   fill-opacity: 1;
 }
 /*#endregion*/

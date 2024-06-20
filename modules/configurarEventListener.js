@@ -42,5 +42,4 @@ export function configurarEventosDeOrdenar(selector, funcionOrdenar) {
           estrella.classList.remove("estrella-opaca");
         });
       })
-
   }
