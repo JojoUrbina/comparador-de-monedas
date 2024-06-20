@@ -47,18 +47,22 @@ export function renderizarTabla(data) {
     altBanderaPais,
     divisaPais,
     importePais,
+    paisFavorito,
   } of data) {
     const filasClonadas = template.cloneNode(true);
     const celdasClonadas = filasClonadas.querySelectorAll("td");
-    celdasClonadas[0].textContent = importePais + " " + simboloMonedaPais;
-    celdasClonadas[0].classList.add(divisaPais);
-    celdasClonadas[1].textContent = divisaPais;
-    celdasClonadas[2].textContent = monedaPais;
-    celdasClonadas[3].textContent = nombrePais;
-    celdasClonadas[4].textContent = lenguajePais.join(", ");
-    celdasClonadas[5].querySelector("img").src = srcBanderaPais;
-    celdasClonadas[5].querySelector("img").alt = altBanderaPais;
-    celdasClonadas[6].textContent = "ver mas";
+    const estrella = celdasClonadas[0].querySelector("svg");
+
+    estrella.classList.add(`${paisFavorito ? "estrella-seleccionada":"estrella-invicible"}`);
+    celdasClonadas[1].textContent = importePais + " " + simboloMonedaPais;
+    celdasClonadas[1].classList.add(divisaPais);
+    celdasClonadas[2].textContent = divisaPais;
+    celdasClonadas[3].textContent = monedaPais;
+    celdasClonadas[4].textContent = nombrePais;
+    celdasClonadas[5].textContent = lenguajePais.join(", ");
+    celdasClonadas[6].querySelector("img").src = srcBanderaPais;
+    celdasClonadas[6].querySelector("img").alt = altBanderaPais;
+    celdasClonadas[7].textContent = "ver mas";
     fragment.appendChild(filasClonadas);
   }
   tbody.appendChild(fragment);

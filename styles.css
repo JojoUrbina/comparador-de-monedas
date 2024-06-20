@@ -19,7 +19,12 @@ td {
 
 .bandera {
   width: 4em;
+  transition: transform 0.3s ease-in-out;
 }
+.bandera:hover {
+  transform: scale(2.5);
+}
+
 #logo {
   width: 2.5rem;
 }
@@ -81,14 +86,35 @@ td {
   overflow-y: auto;
 }
 /*fin del side menu*/
-svg {
+button svg {
   width: 8px;
 }
+
 .btn-ordenar {
   background-color: transparent;
   border: none;
   padding: 0;
-  margin-left: 0.4rem;
+  margin-left: 0.2rem;
+}
+
+.estrella{
+  position: relative;
+  top: -2px;
+  width: 15px;
+  transition: fill-opacity 0.2s ease-in-out;
+  margin-right: 10px !important;
+}
+.estrella-invicible{
+  fill-opacity: 0;
+}
+.estrella-opaca {
+  fill-opacity: 0.5;
+}
+.estrella-seleccionada{
+  fill-opacity: 1;
+}
+.estrella:hover {
+  fill-opacity: 1;
 }
 @media (max-width: 768px) {
   th {

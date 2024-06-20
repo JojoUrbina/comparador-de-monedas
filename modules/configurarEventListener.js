@@ -26,3 +26,21 @@ export function configurarEventosDeOrdenar(selector, funcionOrdenar) {
       }
     });
   }
+
+  export   function configurarEfectoHoverEnEstrellas() {
+    const filas = document.querySelectorAll("tbody tr");
+    filas
+      .forEach((fila) => {
+        fila.addEventListener("mouseover", () => {
+          const celdasEstrella = fila.querySelector("td");
+          const estrella = celdasEstrella.querySelector("svg")
+          estrella.classList.add("estrella-opaca");
+        });
+        fila.addEventListener("mouseout", () => {
+          const celdasEstrella = fila.querySelector("td");
+          const estrella = celdasEstrella.querySelector("svg")
+          estrella.classList.remove("estrella-opaca");
+        });
+      })
+
+  }

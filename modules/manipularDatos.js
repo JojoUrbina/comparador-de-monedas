@@ -37,6 +37,7 @@ export function crearDatosPrincipales(datos, tarifas) {
         ).toFixed(3)
       ),
       ordenDatos: null,
+      paisFavorito:false,
     };
   });
   return datosPrincipales;

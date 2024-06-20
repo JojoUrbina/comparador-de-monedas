@@ -24,6 +24,7 @@ import {
 import {
   configurarEventosDeFiltro,
   configurarEventosDeOrdenar,
+  configurarEfectoHoverEnEstrellas,
 } from "./modules/configurarEventListener.js";
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -98,4 +99,7 @@ function ejecutarLosEventListener() {
       estado.dataPaisesFiltrados = null;
       renderizarTabla(estado.dataPaisesActual);
     });
+
+
+  configurarEfectoHoverEnEstrellas()
 }
