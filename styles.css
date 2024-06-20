@@ -120,4 +120,7 @@ button svg {
   th {
     min-width: 5.5rem;
   }
+  th:first-child {
+    min-width: auto; 
+  }
 }
