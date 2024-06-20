@@ -5,11 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link href="assets/dist/css/bootstrap.min.css" rel="stylesheet" />
     <link href="assets/dist/css/bootstrap.min.css.map" rel="stylesheet" />
-    <script src="./assets/dist/js/bootstrap.bundle.min.js" defer></script>
+    <script src="./assets/dist/js/bootstrap.bundle.min.js"></script>
 
     <!-- Custom styles for this template -->
-    <script src="main.js" defer></script>
-    <script src="filtrarLanguages.js" defer></script>
+    <script src="main.js" type="module"></script>
 
     <link rel="stylesheet" href="styles.css" />
     <title>Proyecto Final</title>
@@ -45,7 +44,7 @@
           height="57"
         />
         <h1 class="display-5 fw-bold text-body-emphasis mb-3">
-          Comparador de monedas
+          Comparador de Países
         </h1>
         <div class="col-lg-6 mx-auto">
           <p class="lead mb-1 fw-normal">
@@ -57,8 +56,8 @@
         </div>
       </div>
     </header>
-    <main>
-      <div class="container w-50">
+    <main class="container my-5">
+      <div class="container my-5">
         <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
           <div class="input-group input-group-md w-100">
             <span
@@ -79,214 +78,144 @@
             class="form-select"
             aria-label="Default select example"
           >
-            <option selected>Elige un pais</option>
+            <option selected value="EUR" class="€" aria-label="Euro">
+              Elige un pais
+            </option>
           </select>
         </div>
       </div>
-     
 
-      <div class="container-fluid mt-5 d-flex flex-wrap gap-3 justify-content-center ">
-         <!--Inicio Side menu-->
+      <div class="row">
+        <!--Inicio Side menu-->
+        <div class="col-lg-3">
+          <div id="sidemenu" class="p-3 bg-light rounded">
+            <span class="px-2 fs-5 fw-semibold pb-3 mb-3">Filtrar por:</span>
 
-     
-        <div id="sidemenu" class="flex-shrink-0 px-3 " style="width: 180px">
-          <a
-            href="#"
-            class="d-flex align-items-center pb-3 mb-3 link-body-emphasis text-decoration-none border-bottom"
-          >
-            <svg class="bi pe-none me-2" width="30" height="24">
-              <use xlink:href="#bootstrap" />
-            </svg>
-            <span class="fs-5 fw-semibold">Filtros/Ordenar</span>
-          </a>
-          <ul class="list-unstyled ps-0">
-            <li class="mb-1">
-              <button
-                class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed"
-                data-bs-toggle="collapse"
-                data-bs-target="#home-collapse"
-                aria-expanded="true"
-              >
-                Home
-              </button>
-              <div class="collapse show" id="home-collapse">
-                <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                  <li>
-                    <a
-                      href="#"
-                      class="link-body-emphasis d-inline-flex text-decoration-none rounded"
-                      >Overview</a
-                    >
-                  </li>
-                  <li>
-                    <a
-                      href="#"
-                      class="link-body-emphasis d-inline-flex text-decoration-none rounded"
-                      >Updates</a
-                    >
-                  </li>
-                  <li>
-                    <a
-                      href="#"
-                      class="link-body-emphasis d-inline-flex text-decoration-none rounded"
-                      >Reports</a
-                    >
-                  </li>
-                </ul>
-              </div>
-            </li>
-            <li class="mb-1">
-              <button
-                class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed"
-                data-bs-toggle="collapse"
-                data-bs-target="#dashboard-collapse"
-                aria-expanded="false"
-              >
-                Dashboard
-              </button>
-              <div class="collapse" id="dashboard-collapse">
-                <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                  <li>
-                    <a
-                      href="#"
-                      class="link-body-emphasis d-inline-flex text-decoration-none rounded"
-                      >Overview</a
-                    >
-                  </li>
-                  <li>
-                    <a
-                      href="#"
-                      class="link-body-emphasis d-inline-flex text-decoration-none rounded"
-                      >Weekly</a
-                    >
-                  </li>
-                  <li>
-                    <a
-                      href="#"
-                      class="link-body-emphasis d-inline-flex text-decoration-none rounded"
-                      >Monthly</a
-                    >
-                  </li>
-                  <li>
-                    <a
-                      href="#"
-                      class="link-body-emphasis d-inline-flex text-decoration-none rounded"
-                      >Annually</a
-                    >
-                  </li>
-                </ul>
-              </div>
-            </li>
-            <li class="mb-1">
-              <button
-                class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed"
-                data-bs-toggle="collapse"
-                data-bs-target="#orders-collapse"
-                aria-expanded="false"
-              >
-                Orders
-              </button>
-              <div class="collapse" id="orders-collapse">
-                <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                  <li>
-                    <a
-                      href="#"
-                      class="link-body-emphasis d-inline-flex text-decoration-none rounded"
-                      >New</a
-                    >
-                  </li>
-                  <li>
-                    <a
-                      href="#"
-                      class="link-body-emphasis d-inline-flex text-decoration-none rounded"
-                      >Processed</a
-                    >
-                  </li>
-                  <li>
-                    <a
-                      href="#"
-                      class="link-body-emphasis d-inline-flex text-decoration-none rounded"
-                      >Shipped</a
-                    >
-                  </li>
-                  <li>
-                    <a
-                      href="#"
-                      class="link-body-emphasis d-inline-flex text-decoration-none rounded"
-                      >Returned</a
-                    >
-                  </li>
-                </ul>
-              </div>
-            </li>
-            <li class="border-top my-3"></li>
-            <li class="mb-1">
-              <button
-                class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed"
-                data-bs-toggle="collapse"
-                data-bs-target="#account-collapse"
-                aria-expanded="false"
-              >
-                Account
-              </button>
-              <div class="collapse" id="account-collapse">
-                <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                  <li>
-                    <a
-                      href="#"
-                      class="link-body-emphasis d-inline-flex text-decoration-none rounded"
-                      >New...</a
-                    >
-                  </li>
-                  <li>
-                    <a
-                      href="#"
-                      class="link-body-emphasis d-inline-flex text-decoration-none rounded"
-                      >Profile</a
-                    >
-                  </li>
-                  <li>
-                    <a
-                      href="#"
-                      class="link-body-emphasis d-inline-flex text-decoration-none rounded"
-                      >Settings</a
-                    >
-                  </li>
-                  <li>
-                    <a
-                      href="#"
-                      class="link-body-emphasis d-inline-flex text-decoration-none rounded"
-                      >Sign out</a
-                    >
-                  </li>
-                </ul>
-              </div>
-            </li>
-          </ul>
+            <li class="border-top my-3 list-unstyled"></li>
+
+            <ul class="list-unstyled ps-0">
+              <li class="mb-1">
+                <button
+                  class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#filtro-region"
+                  aria-expanded="false"
+                >
+                  Region
+                </button>
+                <div class="collapse" id="filtro-region"></div>
+              </li>
+              <li class="mb-1">
+                <button
+                  class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#filtro-lenguajes"
+                  aria-expanded="true"
+                >
+                  Lenguajes mas usados:
+                </button>
+                <div class="collapse show" id="filtro-lenguajes"></div>
+              </li>
+              <li class="mb-1">
+                <button
+                  class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#filtro-monedas"
+                  aria-expanded="false"
+                >
+                  Monedas mas usadas:
+                </button>
+                <div class="collapse" id="filtro-monedas"></div>
+              </li>
+
+              <li class="border-top my-3"></li>
+              <li class="mb-1">
+                <button id="btn-reiniciar-filtros"
+                  class="btn btn-toggle  border-0 collapsed"
+                >
+                  Reiniciar filtros
+                </button>
+              </li>
+            </ul>
+          </div>
         </div>
- <!-- fin Side menu-->
-        <div class="table-responsive rounded-top-1 w-75">
-          <table class="table table-hover table-sm">
-            <thead class="table-light">
-              <tr>
-                <th scope="col">Monto</th>
-                <th scope="col">Divisa</th>
-                <th scope="col">Moneda</th>
-                <th scope="col">Pais</th>
-                <th scope="col">Lenguaje</th>
-                <th scope="col">Bandera</th>
-                <th scope="col">Link</th>
-              </tr>
-            </thead>
-            <tbody></tbody>
-          </table>
+        <!-- fin Side menu-->
+        <div class="col-lg-9">
+          <div class="table-responsive rounded-top-1">
+            <table class="table table-hover table-sm">
+              <thead class="table-light">
+                <tr>
+                  <th scope="col">
+                    Importe
+                    <button class="btn-ordenar ordenar-importe">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 320 512"
+                      >
+                        <!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
+                        <path
+                          d="M137.4 41.4c12.5-12.5 32.8-12.5 45.3 0l128 128c9.2 9.2 11.9 22.9 6.9 34.9s-16.6 19.8-29.6 19.8H32c-12.9 0-24.6-7.8-29.6-19.8s-2.2-25.7 6.9-34.9l128-128zm0 429.3l-128-128c-9.2-9.2-11.9-22.9-6.9-34.9s16.6-19.8 29.6-19.8H288c12.9 0 24.6 7.8 29.6 19.8s2.2 25.7-6.9 34.9l-128 128c-12.5 12.5-32.8 12.5-45.3 0z"
+                        />
+                      </svg>
+                    </button>
+                  </th>
+                  <th scope="col">
+                    Divisa
+                    <button class="btn-ordenar ordenar-divisa">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 320 512"
+                      >
+                        <!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
+                        <path
+                          d="M137.4 41.4c12.5-12.5 32.8-12.5 45.3 0l128 128c9.2 9.2 11.9 22.9 6.9 34.9s-16.6 19.8-29.6 19.8H32c-12.9 0-24.6-7.8-29.6-19.8s-2.2-25.7 6.9-34.9l128-128zm0 429.3l-128-128c-9.2-9.2-11.9-22.9-6.9-34.9s16.6-19.8 29.6-19.8H288c12.9 0 24.6 7.8 29.6 19.8s2.2 25.7-6.9 34.9l-128 128c-12.5 12.5-32.8 12.5-45.3 0z"
+                        />
+                      </svg>
+                    </button>
+                  </th>
+                  <th scope="col">Moneda</th>
+                  <th scope="col">
+                    Pais
+                    <button class="btn-ordenar ordenar-pais">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 320 512"
+                      >
+                        <!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
+                        <path
+                          d="M137.4 41.4c12.5-12.5 32.8-12.5 45.3 0l128 128c9.2 9.2 11.9 22.9 6.9 34.9s-16.6 19.8-29.6 19.8H32c-12.9 0-24.6-7.8-29.6-19.8s-2.2-25.7 6.9-34.9l128-128zm0 429.3l-128-128c-9.2-9.2-11.9-22.9-6.9-34.9s16.6-19.8 29.6-19.8H288c12.9 0 24.6 7.8 29.6 19.8s2.2 25.7-6.9 34.9l-128 128c-12.5 12.5-32.8 12.5-45.3 0z"
+                        />
+                      </svg>
+                    </button>
+                  </th>
+                  <th scope="col">
+                    Lenguaje
+                    <button class="btn-ordenar ordenar-lenguaje">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 320 512"
+                      >
+                        <!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
+                        <path
+                          d="M137.4 41.4c12.5-12.5 32.8-12.5 45.3 0l128 128c9.2 9.2 11.9 22.9 6.9 34.9s-16.6 19.8-29.6 19.8H32c-12.9 0-24.6-7.8-29.6-19.8s-2.2-25.7 6.9-34.9l128-128zm0 429.3l-128-128c-9.2-9.2-11.9-22.9-6.9-34.9s16.6-19.8 29.6-19.8H288c12.9 0 24.6 7.8 29.6 19.8s2.2 25.7-6.9 34.9l-128 128c-12.5 12.5-32.8 12.5-45.3 0z"
+                        />
+                      </svg>
+                    </button>
+                  </th>
+                  <th scope="col">Bandera</th>
+                  <th scope="col">Link</th>
+                </tr>
+              </thead>
+              <tbody></tbody>
+            </table>
+          </div>
         </div>
       </div>
     </main>
     <noscript> Tu navegador no soporta javascript </noscript>
-    <template>
+    <template id="template-tabla-tr">
       <tr>
-        <td class="py-2 simbolo">0</td>
+        <td class="py-2 celda-importe"></td>
 
         <td class="py-2">MDL</td>
         <td class="py-2">Moldovan leu</td>
@@ -301,6 +230,17 @@
         </td>
         <td class="py-2">ver mas</td>
       </tr>
+    </template>
+    <template id="template-filtros-ul">
+      <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+        <li>
+          <a
+            data-btn-valor="El valor del boton usado como identificador cuando se selecciona"
+            class="link-body-emphasis d-inline-flex text-decoration-none rounded"
+            >Overview</a
+          >
+        </li>
+      </ul>
     </template>
   </body>
 </html>
