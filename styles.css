@@ -110,9 +110,16 @@ a:hover {
 }
 
 td {
-  max-width: 150px;
+  max-width: 130px;
+  
 }
+th {
+  min-width: 6rem;
 
+}
+th:first-child {
+  min-width: auto;
+}
 .bandera {
   width: 4em;
   transition: transform 0.3s ease-in-out;
@@ -137,13 +144,4 @@ td {
   margin-left: 0.2rem;
 }
 
-/* @media (max-width: 768px) { */
-@media (max-width: 1200px) {
-  th {
-    min-width: 6rem;
-  }
-  th:first-child {
-    min-width: auto;
-  }
-}
 
