@@ -118,6 +118,5 @@ function ejecutarLosEventListener() {
 
  document.body.addEventListener("click",()=>  {
   localStorage.setItem("estado", JSON.stringify(estado));
-  console.log("hubo un cambio");
  })
 }
