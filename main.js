@@ -46,7 +46,7 @@ async function iniciarApp() {
   estado.dataPaisesPorDefecto = crearDatosPrincipales(paisesConTarifa, tarifas);
   estado.dataPaisesActual = JSON.parse(localStorage.getItem("estado"))
     ?.dataPaisesActual || [...estado.dataPaisesPorDefecto];
-
+    localStorage.clear()
   actualizarImportes(estado.dataPaisesActual);
   renderizarTabla(estado.dataPaisesActual);
   actualizarPlaceholder();
