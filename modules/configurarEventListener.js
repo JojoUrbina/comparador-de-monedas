@@ -53,9 +53,9 @@ export function alternarFavorito(e) {
         !estado.dataPaisesActual[index].paisFavorito;
 
       //esto se puede colocar en el boton, para que me filtre solo los true
-       /*   estado.dataPaisesFavoritos = estado.dataPaisesActual.filter(
+          estado.dataPaisesFavoritos = estado.dataPaisesActual.filter(
         (pais) => pais.paisFavorito === true
-      )   */
+      )   
 
       renderizarTabla(estado.dataPaisesFiltrados || estado.dataPaisesActual);
     }

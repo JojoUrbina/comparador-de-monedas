@@ -44,7 +44,8 @@ async function iniciarApp() {
   const paisesConTarifa = filtrarPaisesConTarifa(paises, tarifas);
 
   estado.dataPaisesPorDefecto = crearDatosPrincipales(paisesConTarifa, tarifas);
-  estado.dataPaisesActual = [...estado.dataPaisesPorDefecto]; // aca le puedo enviar el localStorage
+  estado.dataPaisesActual = JSON.parse(localStorage.getItem("estado"))
+    .dataPaisesActual || [...estado.dataPaisesPorDefecto];
 
   renderizarTabla(estado.dataPaisesPorDefecto);
   renderizarOpcionesSelect(estado.dataPaisesPorDefecto);
@@ -69,7 +70,7 @@ async function iniciarApp() {
 function ejecutarLosEventListener() {
   document.querySelector("input#monto").addEventListener("input", (e) => {
     actualizarImportes(estado.dataPaisesActual);
-    renderizarTabla(estado.dataPaisesActual);
+    renderizarTabla(estado.dataPaisesFiltrados || estado.dataPaisesActual);
   });
 
   document
@@ -82,7 +83,7 @@ function ejecutarLosEventListener() {
 
       actualizarTarifas(estado.dataPaisesActual, tarifas);
       actualizarImportes(estado.dataPaisesActual);
-      renderizarTabla(estado.dataPaisesActual);
+      renderizarTabla(estado.dataPaisesFiltrados || estado.dataPaisesActual);
     });
 
   configurarEventosDeOrdenar(".ordenar-importe", ordenarDatosPorImporte);
@@ -114,4 +115,9 @@ function ejecutarLosEventListener() {
 
       renderizarTabla(estado.dataPaisesFiltrados);
     });
+
+ document.body.addEventListener("click",()=>  {
+  localStorage.setItem("estado", JSON.stringify(estado));
+  console.log("hubo un cambio");
+ })
 }
