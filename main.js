@@ -52,7 +52,6 @@ async function iniciarApp() {
   renderizarTabla(estado.dataPaisesActual);
   actualizarPlaceholder();
   RenderizarIUYconfigurarEventos();
-  localStorage.clear()
 }
 
 function RenderizarIUYconfigurarEventos() {

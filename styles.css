@@ -140,7 +140,7 @@ td {
 /* @media (max-width: 768px) { */
 @media (max-width: 1200px) {
   th {
-    min-width: 5.5rem;
+    min-width: 6rem;
   }
   th:first-child {
     min-width: auto;
