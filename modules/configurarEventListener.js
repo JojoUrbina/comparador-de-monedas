@@ -1,6 +1,7 @@
 import { filtrarPaisesPorCategoria } from "./funcionesFiltrar.js";
 import { renderizarTabla } from "./funcionesRenderizar.js";
 import { estado } from "../main.js";
+
 export function configurarEventosDeFiltro(categoria, propiedadPais) {
   document.querySelectorAll(`.btn-filtro-${categoria}`).forEach((btn) => {
     btn.addEventListener("click", () => {

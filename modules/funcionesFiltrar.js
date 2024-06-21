@@ -1,5 +1,3 @@
-
-
 export function filtrarPaisesConTarifa(paises, tarifas) {
   const paisesConCurrencies = paises.filter((pais) => pais.currencies);
   const paisesConTarifa = paisesConCurrencies.filter(

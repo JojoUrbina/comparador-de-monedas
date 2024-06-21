@@ -40,13 +40,20 @@ export const estado = {
 
 async function iniciarApp() {
   const paises = await fetchPaises();
-  const tarifas = await fetchTarifas();
+  const tarifas = await fetchTarifas("EUR");
   const paisesConTarifa = filtrarPaisesConTarifa(paises, tarifas);
 
   estado.dataPaisesPorDefecto = crearDatosPrincipales(paisesConTarifa, tarifas);
   estado.dataPaisesActual = JSON.parse(localStorage.getItem("estado"))
-  ?.dataPaisesActual || [...estado.dataPaisesPorDefecto];
+    ?.dataPaisesActual || [...estado.dataPaisesPorDefecto];
+
+  actualizarImportes(estado.dataPaisesActual);
   renderizarTabla(estado.dataPaisesActual);
+  actualizarPlaceholder();
+  RenderizarIUYconfigurarEventos();
+}
+
+function RenderizarIUYconfigurarEventos() {
   renderizarOpcionesSelect(estado.dataPaisesActual);
 
   renderizarFiltros(
@@ -62,11 +69,6 @@ async function iniciarApp() {
     "region",
     extraerContarYOrdenarPropiedad(estado.dataPaisesActual, "regionPais")
   );
-  actualizarPlaceholder();
-  ejecutarLosEventListener();
-}
-
-function ejecutarLosEventListener() {
   document.querySelector("input#monto").addEventListener("input", (e) => {
     actualizarImportes(estado.dataPaisesActual);
     renderizarTabla(estado.dataPaisesFiltrados || estado.dataPaisesActual);
@@ -85,23 +87,6 @@ function ejecutarLosEventListener() {
       renderizarTabla(estado.dataPaisesFiltrados || estado.dataPaisesActual);
     });
 
-  configurarEventosDeOrdenar(".ordenar-importe", ordenarDatosPorImporte);
-  configurarEventosDeOrdenar(".ordenar-divisa", ordenarDatosPorDivisa);
-  configurarEventosDeOrdenar(".ordenar-pais", ordenarDatosPorPais);
-  configurarEventosDeOrdenar(".ordenar-lenguaje", ordenarDatosPorLenguaje);
-
-  configurarEventosDeFiltro("lenguajes", "lenguajePais");
-  configurarEventosDeFiltro("monedas", "monedaPais");
-  configurarEventosDeFiltro("region", "regionPais");
-
-  document
-    .querySelector("#btn-reiniciar-filtros")
-    .addEventListener("click", () => {
-      estado.dataPaisesFiltrados = null;
-      renderizarTabla(estado.dataPaisesActual);
-    });
-
-  //funcion que alterna paisFavorito entre true y false los paises.
   document.querySelector("tbody").addEventListener("click", alternarFavorito);
 
   document
@@ -115,7 +100,23 @@ function ejecutarLosEventListener() {
       renderizarTabla(estado.dataPaisesFiltrados);
     });
 
+  document
+    .querySelector("#btn-reiniciar-filtros")
+    .addEventListener("click", () => {
+      estado.dataPaisesFiltrados = null;
+      renderizarTabla(estado.dataPaisesActual);
+    });
+
   document.body.addEventListener("click", () => {
     localStorage.setItem("estado", JSON.stringify(estado));
   });
+
+  configurarEventosDeOrdenar(".ordenar-importe", ordenarDatosPorImporte);
+  configurarEventosDeOrdenar(".ordenar-divisa", ordenarDatosPorDivisa);
+  configurarEventosDeOrdenar(".ordenar-pais", ordenarDatosPorPais);
+  configurarEventosDeOrdenar(".ordenar-lenguaje", ordenarDatosPorLenguaje);
+
+  configurarEventosDeFiltro("lenguajes", "lenguajePais");
+  configurarEventosDeFiltro("monedas", "monedaPais");
+  configurarEventosDeFiltro("region", "regionPais");
 }
