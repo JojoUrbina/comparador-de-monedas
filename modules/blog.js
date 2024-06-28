@@ -3,7 +3,7 @@ const estado = JSON.parse(localStorage.getItem("estado"));
 function renderizarBlog(estado) {
   const paisSeleccionado =
     estado.dataPaisesActual.find((pais) => pais.blogPais) ||
-    estado.dataPaisesActual[0];
+    estado.dataPaisesActual.find((pais) => pais.nombrePais === "España");
   //seccion heroe
   actualizarTextoElemento(
     "#heroe-nombre-principal",
@@ -34,11 +34,11 @@ function renderizarBlog(estado) {
   //inicio seccion caracteristicas-principales
   actualizarTextoElemento(
     "#caracteristicas-principales-area",
-    paisSeleccionado.areaPais.toLocaleString("en-US") + " km²"
+    paisSeleccionado.areaPais.toLocaleString("en-US") + " Km²"
   );
   actualizarTextoElemento(
     "#caracteristicas-principales-poblacion",
-    paisSeleccionado.poblacionPais.toLocaleString("en-US") + " habitantes"
+    paisSeleccionado.poblacionPais.toLocaleString("en-US") + " Habitantes"
   );
   actualizarTextoElemento(
     "#caracteristicas-principales-gini",
@@ -70,6 +70,36 @@ function renderizarBlog(estado) {
     "#caracteristicas-secundarias-mapa",
     paisSeleccionado.mapaPais
   );
+
+  const posicionAreaPais = calcularPosicionPaisPorPropiedad(
+    estado.dataPaisesActual,
+    "areaPais",
+    paisSeleccionado.nombrePais
+  );
+  const posicionPoblacionPais = calcularPosicionPaisPorPropiedad(
+    estado.dataPaisesActual,
+    "poblacionPais",
+    paisSeleccionado.nombrePais
+  );
+
+  const hasGini = paisSeleccionado.giniPais
+
+  const posicionGiniPais = hasGini 
+    ? calcularPosicionPaisPorGini(
+        estado.dataPaisesActual,
+        "giniPais",
+        paisSeleccionado.nombrePais
+      ) + "°"
+    : "?";
+  actualizarTextoElemento(
+    "#caracteristicas-posicion-area",
+    posicionAreaPais + "°"
+  );
+  actualizarTextoElemento(
+    "#caracteristicas-posicion-poblacion",
+    posicionPoblacionPais + "°"
+  );
+  actualizarTextoElemento("#caracteristicas-posicion-gini", posicionGiniPais);
 }
 
 renderizarBlog(estado);
@@ -89,7 +119,7 @@ function actualizarSrcAltImagen(elemento, src, alt) {
     elementoSeleccionado.src = src;
     elementoSeleccionado.alt = alt || "sin informacion para mostrar";
   } else {
-    elementoSeleccionado.src = "...";
+    elementoSeleccionado.src = "https://via.placeholder.com/150";
     elementoSeleccionado.alt = "sin escudo";
   }
   renderizarPaisesRandom(estado);
@@ -110,14 +140,44 @@ function renderizarPaisesRandom(estado) {
     const paisRandom = estado.dataPaisesActual[indiceRandom];
     li.dataset.paisSeleccionado = paisRandom.nombrePais;
     li.addEventListener("click", () => {
-      alternarBlogPais(estado, indiceRandom);
+      alternarBlogPaisRandom(estado, indiceRandom);
     });
     li.querySelector("img").src = paisRandom.srcBanderaPais;
     li.querySelector("h6").textContent = paisRandom.nombrePais;
   });
 }
-function alternarBlogPais(estado, indice) {
+
+function calcularPosicionPaisPorPropiedad(
+  dataPaises,
+  propiedad,
+  nombreDelPais
+) {
+  const paises = [...dataPaises];
+  const paisesOrdenadosPropiedad = paises.sort(
+    (a, b) => b[propiedad] - a[propiedad]
+  );
+
+  const posicionPais = paisesOrdenadosPropiedad.findIndex(
+    (pais) => pais.nombrePais === nombreDelPais
+  );
+
+  return posicionPais + 1;
+  //retornar indice
+}
+function calcularPosicionPaisPorGini(dataPaises, propiedad, nombreDelPais) {
+  const paises = [...dataPaises];
+  const paisesConGini = paises.filter((pais) => pais.giniPais);
+  const paisesOrdenadosPropiedad = paisesConGini.sort(
+    (a, b) => a[propiedad] - b[propiedad]
+  );
+  const posicionPais = paisesOrdenadosPropiedad.findIndex(
+    (pais) => pais.nombrePais === nombreDelPais
+  );
+  return posicionPais + 1;
+}
+
+function alternarBlogPaisRandom(estado, indice) {
   estado.dataPaisesActual.forEach((pais) => (pais.blogPais = false));
   estado.dataPaisesActual[indice].blogPais = true;
-  localStorage.setItem("estado", JSON.stringify(estado))
+  localStorage.setItem("estado", JSON.stringify(estado));
 }
