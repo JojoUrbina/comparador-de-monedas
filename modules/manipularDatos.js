@@ -13,18 +13,43 @@ export function actualizarImportes(dataPaisesActual) {
 export function crearDatosPrincipales(datos, tarifas) {
   const datosProcesados = [...datos];
   const datosPrincipales = datosProcesados.map((pais) => {
-    const { currencies, translations, languages, flags, region } = pais;
+    const {
+      currencies,
+      translations,
+      languages,
+      flags,
+      region,
+      population,
+      area,
+      gini,
+      name,
+      cca2,
+      coatOfArms,
+      capital,
+      subregion,
+      independent,
+      timezones,
+      latlng,
+      maps
+
+    } = pais;
+    
     return {
       nombrePais: translations.spa.common,
-       // se puede manipular para enviar la cantidad de idiomas que se quiera .slice(0,3).join(", ")
+       nombreNativoPais:name.nativeName[Object.keys(name.nativeName)[0]].common, 
+       nombreOficialPais:name.nativeName[Object.keys(name.nativeName)[0]].official,
+       cca2Pais : cca2,
+      // se puede manipular para enviar la cantidad de idiomas que se quiera .slice(0,3).join(", ")
       lenguajePais: Object.values(languages).slice(0, 3),
       monedaPais: currencies[Object.keys(currencies)[0]].name,
       simboloMonedaPais:
         currencies[Object.keys(currencies)[0]].symbol?.replace(/\s/g, "") ||
         "$",
       srcBanderaPais: flags.png,
-      altBanderaPais: flags.alt,
-      regionPais:region,
+      srcBanderaSvgPais:flags.svg,
+      srcEscudoPais:coatOfArms.svg ? coatOfArms.svg : null ,
+      altBanderaPais: flags.alt ? flags.alt : null ,
+      regionPais: region,
       divisaPais: Object.keys(currencies)[1] || Object.keys(currencies)[0],
       tarifaPais: Number(
         tarifas[Object.keys(currencies)[1]] ||
@@ -37,7 +62,18 @@ export function crearDatosPrincipales(datos, tarifas) {
         ).toFixed(3)
       ),
       ordenDatos: null,
-      paisFavorito:false,
+      paisFavorito: false,
+      poblacionPais: population,
+      areaPais: area,
+      giniPais: gini ? Object.values(gini)[0] : null,
+      capitalPais:capital || "No tiene capital",
+      subregionPais:subregion || "No forma parte de ninguna subregion",
+      independientePais:independent ? "SI": "NO",
+      zonaHorariaPais:timezones,
+      coordenadasPais:latlng,
+      mapaPais : maps.openStreetMaps,
+      blogPais:false,
+
     };
   });
   return datosPrincipales;

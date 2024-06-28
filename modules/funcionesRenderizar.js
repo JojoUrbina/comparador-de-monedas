@@ -74,7 +74,7 @@ export function renderizarTabla(data) {
     celdasClonadas[5].textContent = lenguajePais.join(", ");
     celdasClonadas[6].querySelector("img").src = srcBanderaPais;
     celdasClonadas[6].querySelector("img").alt = altBanderaPais;
-    celdasClonadas[7].textContent = "ver mas";
+    //celdasClonadas[7].textContent = "ver mas";
     fragment.appendChild(templateClonado);
   }
   tbody.appendChild(fragment);

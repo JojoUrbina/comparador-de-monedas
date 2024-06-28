@@ -38,15 +38,15 @@ export const estado = {
   dataPaisesFavoritos: [],
 };
 
-async function iniciarApp() {
+ async function iniciarApp() {
   const paises = await fetchPaises();
-  const tarifas = await fetchTarifas("EUR");
+  const tarifas = await fetchTarifas();
   const paisesConTarifa = filtrarPaisesConTarifa(paises, tarifas);
 
   estado.dataPaisesPorDefecto = crearDatosPrincipales(paisesConTarifa, tarifas);
+  console.log(estado.dataPaisesPorDefecto);
   estado.dataPaisesActual = JSON.parse(localStorage.getItem("estado"))
     ?.dataPaisesActual || [...estado.dataPaisesPorDefecto];
-
   actualizarTarifas(estado.dataPaisesActual, tarifas);
   actualizarImportes(estado.dataPaisesActual);
   renderizarTabla(estado.dataPaisesActual);
