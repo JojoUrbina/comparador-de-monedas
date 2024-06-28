@@ -41,6 +41,7 @@ export function configurarEfectoHoverEnEstrellas() {
 
 export function alternarFavorito(e) {
   const btnDatasetValor = e.srcElement.dataset.btnValor;
+
   if (btnDatasetValor) {
     const index = estado.dataPaisesActual.findIndex(
       (pais) => pais.nombrePais === btnDatasetValor
@@ -61,4 +62,20 @@ export function alternarFavorito(e) {
       renderizarTabla(estado.dataPaisesFiltrados || estado.dataPaisesActual);
     }
   }
+}
+export function alternarBlogPais(e) {
+  const datasetPaisSeleccionado = e.srcElement.dataset.paisSeleccionado;
+  console.log(datasetPaisSeleccionado);
+
+  if (datasetPaisSeleccionado) {
+    const index = estado.dataPaisesActual.findIndex(
+      (pais) => pais.nombrePais === datasetPaisSeleccionado
+    );
+
+    if (index !== -1) {
+      estado.dataPaisesActual.forEach(pais =>pais.blogPais = false)
+      estado.dataPaisesActual[index].blogPais =true;
+     // renderizarTabla(estado.dataPaisesFiltrados || estado.dataPaisesActual);
+    }
+  } 
 }

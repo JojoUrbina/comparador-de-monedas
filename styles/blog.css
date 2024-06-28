@@ -56,19 +56,15 @@ h6 {
 #caracteristicas-secundarias-zonaHoraria{
   width: 16rem
 }
+
 .enlance-masPaises img {
   object-position: center;
-  object-fit: cover;
+  object-fit: contain;
    width: 50%;
 }
 @media (min-width: 768px) {
   .h-md-250 {
     height: 250px;
-  }
-  .enlance-masPaises img {
-    object-position: center;
-    object-fit: cover;
-     width: 50%;
   }
 }
 @media (max-width: 425px) {

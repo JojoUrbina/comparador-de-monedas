@@ -1,7 +1,9 @@
 const estado = JSON.parse(localStorage.getItem("estado"));
 
 function renderizarBlog(estado) {
-  const paisSeleccionado = estado.dataPaisesActual[81];
+  const paisSeleccionado =
+    estado.dataPaisesActual.find((pais) => pais.blogPais) ||
+    estado.dataPaisesActual[0];
   //seccion heroe
   actualizarTextoElemento(
     "#heroe-nombre-principal",
@@ -106,8 +108,16 @@ function renderizarPaisesRandom(estado) {
       Math.random() * estado.dataPaisesActual.length
     );
     const paisRandom = estado.dataPaisesActual[indiceRandom];
-    //console.log(li.querySelector("a"));
+    li.dataset.paisSeleccionado = paisRandom.nombrePais;
+    li.addEventListener("click", () => {
+      alternarBlogPais(estado, indiceRandom);
+    });
     li.querySelector("img").src = paisRandom.srcBanderaPais;
     li.querySelector("h6").textContent = paisRandom.nombrePais;
   });
+}
+function alternarBlogPais(estado, indice) {
+  estado.dataPaisesActual.forEach((pais) => (pais.blogPais = false));
+  estado.dataPaisesActual[indice].blogPais = true;
+  localStorage.setItem("estado", JSON.stringify(estado))
 }
