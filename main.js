@@ -44,9 +44,9 @@ export const estado = {
   const paisesConTarifa = filtrarPaisesConTarifa(paises, tarifas);
 
   estado.dataPaisesPorDefecto = crearDatosPrincipales(paisesConTarifa, tarifas);
-  console.log(estado.dataPaisesPorDefecto);
   estado.dataPaisesActual = JSON.parse(localStorage.getItem("estado"))
     ?.dataPaisesActual || [...estado.dataPaisesPorDefecto];
+  localStorage.clear()
   actualizarTarifas(estado.dataPaisesActual, tarifas);
   actualizarImportes(estado.dataPaisesActual);
   renderizarTabla(estado.dataPaisesActual);
