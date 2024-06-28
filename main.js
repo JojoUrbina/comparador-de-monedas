@@ -45,8 +45,11 @@ export const estado = {
   const paisesConTarifa = filtrarPaisesConTarifa(paises, tarifas);
 
   estado.dataPaisesPorDefecto = crearDatosPrincipales(paisesConTarifa, tarifas);
-  estado.dataPaisesActual = JSON.parse(localStorage.getItem("estado"))
+  estado.dataPaisesActual = JSON.parse(localStorage.getItem("estado1"))
     ?.dataPaisesActual || [...estado.dataPaisesPorDefecto];
+
+    localStorage.removeItem("estado")//quitar cuando todos reinicien su localStorage
+  
   actualizarTarifas(estado.dataPaisesActual, tarifas);
   actualizarImportes(estado.dataPaisesActual);
   renderizarTabla(estado.dataPaisesActual);
@@ -113,7 +116,7 @@ function RenderizarIUYconfigurarEventos() {
     });
 
   document.body.addEventListener("click", () => {
-    localStorage.setItem("estado", JSON.stringify(estado));
+    localStorage.setItem("estado1", JSON.stringify(estado));
   });
 
   configurarEventosDeOrdenar(".ordenar-importe", ordenarDatosPorImporte);

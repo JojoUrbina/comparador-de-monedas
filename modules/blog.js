@@ -1,4 +1,4 @@
-const estado = JSON.parse(localStorage.getItem("estado"));
+const estado = JSON.parse(localStorage.getItem("estado1"));
 
 function renderizarBlog(estado) {
   const paisSeleccionado =
@@ -65,7 +65,6 @@ function renderizarBlog(estado) {
     "#caracteristicas-secundarias-coordenadas",
     paisSeleccionado.coordenadasPais
   );
-  console.log(paisSeleccionado.coordenadasPais);
   actualizarEnlaceElemento(
     "#caracteristicas-secundarias-mapa",
     paisSeleccionado.mapaPais
@@ -179,5 +178,5 @@ function calcularPosicionPaisPorGini(dataPaises, propiedad, nombreDelPais) {
 function alternarBlogPaisRandom(estado, indice) {
   estado.dataPaisesActual.forEach((pais) => (pais.blogPais = false));
   estado.dataPaisesActual[indice].blogPais = true;
-  localStorage.setItem("estado", JSON.stringify(estado));
+  localStorage.setItem("estado1", JSON.stringify(estado));
 }
