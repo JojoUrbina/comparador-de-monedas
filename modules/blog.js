@@ -99,6 +99,7 @@ function renderizarBlog(estado) {
     posicionPoblacionPais + "°"
   );
   actualizarTextoElemento("#caracteristicas-posicion-gini", posicionGiniPais);
+  setCountry(paisSeleccionado.nombrePais)
 }
 
 renderizarBlog(estado);
@@ -161,7 +162,7 @@ function calcularPosicionPaisPorPropiedad(
   );
 
   return posicionPais + 1;
-  //retornar indice
+
 }
 function calcularPosicionPaisPorGini(dataPaises, propiedad, nombreDelPais) {
   const paises = [...dataPaises];
@@ -179,4 +180,11 @@ function alternarBlogPaisRandom(estado, indice) {
   estado.dataPaisesActual.forEach((pais) => (pais.blogPais = false));
   estado.dataPaisesActual[indice].blogPais = true;
   localStorage.setItem("estado1", JSON.stringify(estado));
+}
+
+//Se uso chatGPT para esta funcion
+function setCountry(country) {
+  const url = new URL(window.location.href);
+  url.searchParams.set('pais', country);
+  window.history.pushState({}, '', url)
 }
