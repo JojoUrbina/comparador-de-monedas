@@ -1,4 +1,4 @@
-const estado = JSON.parse(localStorage.getItem("estado1"));
+const estado = JSON.parse(localStorage.getItem("estado"));
 
 function renderizarBlog(estado) {
   const paisSeleccionado =
@@ -179,10 +179,11 @@ function calcularPosicionPaisPorGini(dataPaises, propiedad, nombreDelPais) {
 function alternarBlogPaisRandom(estado, indice) {
   estado.dataPaisesActual.forEach((pais) => (pais.blogPais = false));
   estado.dataPaisesActual[indice].blogPais = true;
-  localStorage.setItem("estado1", JSON.stringify(estado));
+  localStorage.setItem("estado", JSON.stringify(estado));
 }
 
-//Se uso chatGPT para esta funcion
+//Se uso chatGPT para esta funcion 
+//le agrega a la url el parametro del pais
 function setCountry(country) {
   const url = new URL(window.location.href);
   url.searchParams.set('pais', country);

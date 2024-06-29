@@ -16,6 +16,8 @@
     />
     <link rel="stylesheet" href="../styles.css" />
     <link href="../styles/blog.css" rel="stylesheet" />
+    <link href="../styles/list-groups.css" rel="stylesheet" />
+
     <!-- <script src="./modules/blog.js"></script> -->
 
     <title>Comparador de países</title>
@@ -130,7 +132,9 @@
             <a class="nav-item nav-link link-body-emphasis" href="../index.html"
               >Divisas</a
             >
-            <a class="nav-item nav-link link-body-emphasis" href="../pages/paises.html"
+            <a
+              class="nav-item nav-link link-body-emphasis"
+              href="../pages/paises.html"
               >Países</a
             >
             <a class="nav-item nav-link link-body-emphasis" href="#"
@@ -143,27 +147,88 @@
     <!--Final NavBar-->
 
     <main class="container">
-      <div class="mb-4 rounded text-body-emphasis bg-body-tertiary row">
-        <div id="blog-heroe-pais" class="col-lg-7 px-3 p-4 p-md-5">
-          <h1 id="heroe-nombre-principal" class="display-4 fst-italic">...</h1>
-          <p class="lead my-3 fs-5">
-            Nombre nativo:
-            <b id="heroe-nombre-nativo" class="fw-bold">Venezuela</b>
-          </p>
-          <p class="lead my-3 fs-5">
-            Nombre oficial:
-            <b id="heroe-nombre-oficial" class="fw-bold">...</b>
-          </p>
-          <p class="lead my-3 fs-5">
-            *CCA2:
-            <b id="heroe-nombre-cca2" class="fw-bold">VE</b>
-          </p>
-          <p class="text-body-secondary">
-            *Es el código de país según el estándar ISO 3166-1 alpha-2. Este
-            estándar asigna códigos de dos letras a los países y territorios.
-          </p>
+      <!--  <h1 class="text-center p-3 fs-1" >Trivia</h1> -->
+      <header>
+        <div class="px-4 py-4 my-5 text-center">
+          
+          <h1 class="display-5 fw-bold text-body-emphasis mb-3">
+            Trivia de Banderas
+          </h1>
+          <div class="col-lg-6 mx-auto">
+            <p class="lead mb-1 fw-normal">
+              Bienvenido a nuestra sección de
+              <strong>Trivia de Banderas</strong>. Pon a prueba tus
+              conocimientos sobre las banderas del mundo. Se mostrará una
+              bandera y tendrás tres opciones para elegir la correcta.
+              ¡Diviértete aprendiendo y descubre cuánto sabes sobre los países
+              del mundo!
+            </p>
+          </div>
         </div>
-        <div id="blog-heroe-banderas" class="col-lg-5 px-0">
+      </header>
+      <div class="mb-4 rounded text-body-emphasis bg-body-tertiary row">
+        <div id="blog-heroe-pais" class="col-lg-5 px-3 p-2">
+          <div
+            class="d-flex flex-column flex-md-row p-4 gap-4 align-items-center justify-content-center"
+          >
+            <div class="list-group list-group-checkable d-grid gap-4 border-0">
+              <input
+                class="list-group-item-check pe-none"
+                type="radio"
+                name="listGroupCheckableRadios"
+                id="listGroupCheckableRadios1"
+                value=""
+              />
+              <label
+                class="list-group-item rounded-3 fw-bold"
+                for="listGroupCheckableRadios1"
+              >
+                Opción 1
+                <span
+                  class="list-group-item d-block text-primary-emphasis opacity-75 fs-3"
+                  >Venezuela</span
+                >
+              </label>
+
+              <input
+                class="list-group-item-check pe-none"
+                type="radio"
+                name="listGroupCheckableRadios"
+                id="listGroupCheckableRadios2"
+                value=""
+              />
+              <label
+                class="list-group-item rounded-3 fw-bold"
+                for="listGroupCheckableRadios2"
+              >
+                Opción 2
+                <span
+                  class="list-group-item d-block text-primary-emphasis opacity-75 fs-3"
+                  >Francia</span
+                >
+              </label>
+
+              <input
+                class="list-group-item-check pe-none"
+                type="radio"
+                name="listGroupCheckableRadios"
+                id="listGroupCheckableRadios3"
+                value=""
+              />
+              <label
+                class="list-group-item rounded-3 fw-bold"
+                for="listGroupCheckableRadios3"
+              >
+                Opción 3
+                <span
+                  class="list-group-item d-block text-primary-emphasis opacity-75 fs-3"
+                  >Argentina</span
+                >
+              </label>
+            </div>
+          </div>
+        </div>
+        <div id="blog-heroe-banderas" class="col-lg-7 px-0">
           <div
             id="carouselExampleAutoplaying"
             class="carousel slide"
@@ -173,44 +238,12 @@
               <div class="carousel-item active">
                 <img
                   id="imagen-bandera-principal"
-                  src="https://via.placeholder.com/150"
-                  class="d-block w-100"
-                  alt="..."
-                />
-              </div>
-              <div class="carousel-item">
-                <img
-                  id="imagen-bandera-escudo"
-                  src="https://via.placeholder.com/150"
+                  src="https://flagcdn.com/ve.svg"
                   class="d-block w-100"
                   alt="..."
                 />
               </div>
             </div>
-            <button
-              class="carousel-control-prev"
-              type="button"
-              data-bs-target="#carouselExampleAutoplaying"
-              data-bs-slide="prev"
-            >
-              <span
-                class="carousel-control-prev-icon"
-                aria-hidden="true"
-              ></span>
-              <span class="visually-hidden">Previous</span>
-            </button>
-            <button
-              class="carousel-control-next"
-              type="button"
-              data-bs-target="#carouselExampleAutoplaying"
-              data-bs-slide="next"
-            >
-              <span
-                class="carousel-control-next-icon"
-                aria-hidden="true"
-              ></span>
-              <span class="visually-hidden">Next</span>
-            </button>
           </div>
         </div>
       </div>
