@@ -83,3 +83,6 @@
 .list-group-item {
   border: none;
 }
+strong.card-title{
+  font-size: 5rem !important;
+}

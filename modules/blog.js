@@ -1,4 +1,4 @@
-const estadoActual = "estado";
+const estadoActual = "estado3";
 const estado = JSON.parse(localStorage.getItem(estadoActual ));
 
 function renderizarBlog(estado) {

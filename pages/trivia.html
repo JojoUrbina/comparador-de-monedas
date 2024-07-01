@@ -129,14 +129,18 @@
           </div>
           <div class="nav justify-content-end">
             <a class="nav-item nav-link link-body-emphasis" href="../index.html"
-            >Divisas</a
-          >
-          <a class="nav-item nav-link link-body-emphasis" href="../pages/paises.html"
-            >Países</a
-          >
-          <a class="nav-item nav-link link-body-emphasis" href="../pages/trivia.html"
-            >Trivia</a
-          >
+              >Divisas</a
+            >
+            <a
+              class="nav-item nav-link link-body-emphasis"
+              href="../pages/paises.html"
+              >Países</a
+            >
+            <a
+              class="nav-item nav-link link-body-emphasis"
+              href="../pages/trivia.html"
+              >Trivia</a
+            >
           </div>
         </nav>
       </div>
@@ -146,7 +150,7 @@
     <main class="container">
       <!--  <h1 class="text-center p-3 fs-1" >Trivia</h1> -->
       <header>
-        <div class="px-4 py-4 my-5 text-center">
+        <div class="px-4 py-4 my-2 text-center">
           <h1 class="display-5 fw-bold text-body-emphasis mb-3">
             Trivia de Banderas
           </h1>
@@ -162,6 +166,18 @@
           </div>
         </div>
       </header>
+      <!--Inicio Boton Iniciar trivia-->
+      <div class="d-grid gap-2 col-3 mx-auto mb-4">
+        <button
+          id="btn-iniciar-trivia"
+          type="button"
+          class="btn btn-outline-success btn-lg fw-bold"
+        >
+          Iniciar Trivia
+        </button>
+      </div>
+      <!--Fin Boton Iniciar trivia-->
+
       <div class="mb-4 rounded text-body-emphasis bg-body-tertiary row">
         <div id="blog-heroe-pais" class="col-lg-5 px-3 p-2">
           <div
@@ -250,23 +266,27 @@
             class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative"
           >
             <div class="card text-center">
-              <div class="card-header">Área</div>
+              <div class="card-header">Contador</div>
               <div class="card-body">
-                <strong
-                  id="caracteristicas-principales-area"
-                  class="card-title fs-3"
-                  >916445.0 km²</strong
+                <strong id="estadisticas-contador" class="card-title fs-3"
+                  >0</strong
                 >
-                <p class="card-text">
-                  En comparación con el resto de países con divisa, su posición
-                  en términos de tamaño territorial lo coloca en el lugar:
-                </p>
-                <h3
-                  id="caracteristicas-posicion-area"
-                  class="fs-1 text-primary-emphasis"
+                Segundos
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div
+            class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative"
+          >
+            <div class="card text-center">
+              <div class="card-header">Puntaje</div>
+              <div class="card-body">
+                <strong id="estadisticas-puntuacion" class="card-title fs-3"
+                  >0</strong
                 >
-                  3º
-                </h3>
+                Puntos
               </div>
             </div>
           </div>
@@ -277,50 +297,14 @@
             class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative"
           >
             <div class="card text-center">
-              <div class="card-header">Población</div>
+              <div class="card-header">Puntuacion maxima</div>
               <div class="card-body">
                 <strong
-                  id="caracteristicas-principales-poblacion"
+                  id="estadisticas-puntuacion-maxima"
                   class="card-title fs-3"
-                  >28435943 habitantes</strong
+                  >0</strong
                 >
-                <p class="card-text">
-                  En comparación con el resto de países con divisa, su posición
-                  en términos de tamaño poblacional lo coloca en el lugar:
-                </p>
-                <h3
-                  id="caracteristicas-posicion-poblacion"
-                  class="fs-1 text-primary-emphasis"
-                >
-                  3º
-                </h3>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-md-4">
-          <div
-            class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative"
-          >
-            <div class="card text-center">
-              <div class="card-header">Gini</div>
-              <div class="card-body">
-                <strong
-                  id="caracteristicas-principales-gini"
-                  class="card-title fs-3"
-                  >44.8</strong
-                >
-                <p class="card-text">
-                  En comparación al resto de países, su posición en términos de
-                  desigualdad según el índice gini lo coloca en el lugar:
-                </p>
-                <h3
-                  id="caracteristicas-posicion-gini"
-                  class="fs-1 text-primary-emphasis"
-                >
-                  3º
-                </h3>
+                Puntos
               </div>
             </div>
           </div>

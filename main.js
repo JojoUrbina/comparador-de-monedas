@@ -31,7 +31,10 @@ document.addEventListener("DOMContentLoaded", () => {
   iniciarApp();
 });
 
-const estadoActual = "estado";
+const estadoActual = "estado3";
+
+
+
 
 export const estado = {
   dataPaisesPorDefecto: [],
@@ -40,6 +43,7 @@ export const estado = {
   dataPaisesFavoritos: [],
   dataTrivia: {
     respuestas: [],
+    estadisticas:{ puntos: 0, maximoPuntaje: 0, contador: 0 }//borrar
   },
 };
 
@@ -53,7 +57,9 @@ async function iniciarApp() {
   estado.dataPaisesActual = JSON.parse(localStorage.getItem(estadoActual))
     ?.dataPaisesActual || [...estado.dataPaisesPorDefecto];
 
-  //localStorage.clear()//quitar cuando todos reinicien su localStorage
+  localStorage.removeItem("estado")
+  localStorage.removeItem("estado1")
+
 
   actualizarTarifas(estado.dataPaisesActual, tarifas);
   actualizarImportes(estado.dataPaisesActual);
