@@ -14,6 +14,8 @@ function iniciarApp(estado) {
 
   const btnIniciarTrivia = document.querySelector("#btn-iniciar-trivia");
   btnIniciarTrivia.addEventListener("click", () => {
+    document.querySelector(`#btn-iniciar-trivia`).disabled = true;
+
     iniciarTrivia(estado);
   });
 }
@@ -45,10 +47,12 @@ function iniciarTrivia(estado) {
   }, 1000);
 
   const timeoutId = setTimeout(() => {
+    document.querySelector(`#btn-iniciar-trivia`).disabled = false;
     clearTimeout(idTemporizadorNuevaTrivia);
     desactivarRespuestas();
     reiniciarEstilos();
     clearInterval(idInterval);
+    
   }, tiempoMaximoTrivia);
   setTimeout(() => clearTimeout(timeoutId), tiempoMaximoTrivia + 1);
 }
