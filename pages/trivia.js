@@ -22,7 +22,6 @@ function iniciarApp(estado) {
 function iniciarTrivia(estado) {
   habilitarRespuestas();
   const tiempoMaximoTrivia = 10000;
-
   estadoEstadisticasTrivia.puntos = 0;
   estadoEstadisticasTrivia.contador = tiempoMaximoTrivia / 1000;
 
@@ -30,10 +29,7 @@ function iniciarTrivia(estado) {
     "#estadisticas-puntuacion",
     estadoEstadisticasTrivia.puntos
   );
-  actualizarTextoElemento(
-    "#estadisticas-contador",
-    estadoEstadisticasTrivia.contador 
-  );
+ actualizarTextoElemento("#estadisticas-contador",estadoEstadisticasTrivia.contador);
 
   crearNuevaTrivia(estado);
 
