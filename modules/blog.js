@@ -1,4 +1,5 @@
-const estado = JSON.parse(localStorage.getItem("estado"));
+const estadoActual = "estado";
+const estado = JSON.parse(localStorage.getItem(estadoActual ));
 
 function renderizarBlog(estado) {
   const paisSeleccionado =
@@ -179,7 +180,7 @@ function calcularPosicionPaisPorGini(dataPaises, propiedad, nombreDelPais) {
 function alternarBlogPaisRandom(estado, indice) {
   estado.dataPaisesActual.forEach((pais) => (pais.blogPais = false));
   estado.dataPaisesActual[indice].blogPais = true;
-  localStorage.setItem("estado", JSON.stringify(estado));
+  localStorage.setItem(estadoActual , JSON.stringify(estado));
 }
 
 //Se uso chatGPT para esta funcion 

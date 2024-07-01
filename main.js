@@ -19,37 +19,42 @@ import {
 import {
   filtrarPaisesConTarifa,
   extraerContarYOrdenarPropiedad,
-  
 } from "./modules/funcionesFiltrar.js";
 import {
   configurarEventosDeFiltro,
   configurarEventosDeOrdenar,
   alternarFavorito,
-  alternarBlogPais
+  alternarBlogPais,
 } from "./modules/configurarEventListener.js";
 
 document.addEventListener("DOMContentLoaded", () => {
   iniciarApp();
 });
 
+const estadoActual = "estado";
+
 export const estado = {
   dataPaisesPorDefecto: [],
   dataPaisesFiltrados: null,
   dataPaisesActual: [],
   dataPaisesFavoritos: [],
+  dataTrivia: {
+    respuestas: [],
+  },
 };
 
- async function iniciarApp() {
+async function iniciarApp() {
+  //const estadoAnterior= "estado1" //siempre se borra para comenzar de nuevo
   const paises = await fetchPaises();
   const tarifas = await fetchTarifas();
   const paisesConTarifa = filtrarPaisesConTarifa(paises, tarifas);
 
   estado.dataPaisesPorDefecto = crearDatosPrincipales(paisesConTarifa, tarifas);
-  estado.dataPaisesActual = JSON.parse(localStorage.getItem("estado"))
+  estado.dataPaisesActual = JSON.parse(localStorage.getItem(estadoActual))
     ?.dataPaisesActual || [...estado.dataPaisesPorDefecto];
 
-    localStorage.removeItem("estado1")//quitar cuando todos reinicien su localStorage
-  
+  //localStorage.clear()//quitar cuando todos reinicien su localStorage
+
   actualizarTarifas(estado.dataPaisesActual, tarifas);
   actualizarImportes(estado.dataPaisesActual);
   renderizarTabla(estado.dataPaisesActual);
@@ -94,9 +99,6 @@ function RenderizarIUYconfigurarEventos() {
   document.querySelector("tbody").addEventListener("click", alternarFavorito);
   document.querySelector("tbody").addEventListener("click", alternarBlogPais);
 
-
-
-
   document
     .querySelector("#btn-filtro-favoritos")
     .addEventListener("click", () => {
@@ -116,7 +118,7 @@ function RenderizarIUYconfigurarEventos() {
     });
 
   document.body.addEventListener("click", () => {
-    localStorage.setItem("estado", JSON.stringify(estado));
+    localStorage.setItem(estadoActual, JSON.stringify(estado));
   });
 
   configurarEventosDeOrdenar(".ordenar-importe", ordenarDatosPorImporte);

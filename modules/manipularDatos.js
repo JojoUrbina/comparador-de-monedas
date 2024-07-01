@@ -73,6 +73,7 @@ export function crearDatosPrincipales(datos, tarifas) {
       coordenadasPais:latlng,
       mapaPais : maps.openStreetMaps,
       blogPais:false,
+      paisCorrectoTrivia:false,
 
     };
   });
