@@ -1,28 +1,27 @@
 const estadoActual = "estado3";
 const estado = JSON.parse(localStorage.getItem(estadoActual));
-const estadoEstadisticasTrivia = JSON.parse(
-  localStorage.getItem("estadisticasTrivia")
-) || { puntos: 0, maximoPuntaje: 0, contador: 0 };
+const estadoEstadisticasTrivia = { puntos: 0, maximoPuntaje: 0, contador: 0 };
 
+estadoEstadisticasTrivia.maximoPuntaje = +localStorage.getItem("maximoPuntajeTrivia") || 0
 let idTemporizadorNuevaTrivia;
 
 iniciarApp(estado);
 function iniciarApp(estado) {
-  //crearNuevaTrivia(estado);
+  actualizarTextoElemento(
+    "#estadisticas-puntuacion-maxima",
+    estadoEstadisticasTrivia.maximoPuntaje
+  );
   configurarEventosDeRespuestas(estado);
   desactivarRespuestas();
-
-  const btnIniciarTrivia = document.querySelector("#btn-iniciar-trivia");
-  btnIniciarTrivia.addEventListener("click", () => {
+  document.querySelector("#btn-iniciar-trivia").addEventListener("click", () => {
     document.querySelector(`#btn-iniciar-trivia`).disabled = true;
-
     iniciarTrivia(estado);
   });
 }
 
 function iniciarTrivia(estado) {
   habilitarRespuestas();
-  const tiempoMaximoTrivia = 5000;
+  const tiempoMaximoTrivia = 10000;
 
   estadoEstadisticasTrivia.puntos = 0;
   estadoEstadisticasTrivia.contador = tiempoMaximoTrivia / 1000;
@@ -49,9 +48,9 @@ function iniciarTrivia(estado) {
   const timeoutId = setTimeout(() => {
     document.querySelector(`#btn-iniciar-trivia`).disabled = false;
     clearTimeout(idTemporizadorNuevaTrivia);
+    clearInterval(idInterval);
     desactivarRespuestas();
     reiniciarEstilos();
-    clearInterval(idInterval);
     
   }, tiempoMaximoTrivia);
   setTimeout(() => clearTimeout(timeoutId), tiempoMaximoTrivia + 1);
@@ -168,6 +167,7 @@ function actualizarEstadisticaPuntuacion(isRespuestaCorrecta) {
     estadoEstadisticasTrivia.puntos > estadoEstadisticasTrivia.maximoPuntaje
   ) {
     estadoEstadisticasTrivia.maximoPuntaje = estadoEstadisticasTrivia.puntos;
+    localStorage.setItem("maximoPuntajeTrivia",estadoEstadisticasTrivia.maximoPuntaje.toString())
   }
 }
 
