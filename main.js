@@ -31,11 +31,7 @@ document.addEventListener("DOMContentLoaded", () => {
   iniciarApp();
 });
 
-const estadoActual = "estado3";
-
-
-
-
+const estadoActual = "estado";
 export const estado = {
   dataPaisesPorDefecto: [],
   dataPaisesFiltrados: null,
@@ -43,12 +39,10 @@ export const estado = {
   dataPaisesFavoritos: [],
   dataTrivia: {
     respuestas: [],
-    estadisticas:{ puntos: 0, maximoPuntaje: 0, contador: 0 }//borrar
   },
 };
 
 async function iniciarApp() {
-  //const estadoAnterior= "estado1" //siempre se borra para comenzar de nuevo
   const paises = await fetchPaises();
   const tarifas = await fetchTarifas();
   const paisesConTarifa = filtrarPaisesConTarifa(paises, tarifas);
@@ -57,9 +51,10 @@ async function iniciarApp() {
   estado.dataPaisesActual = JSON.parse(localStorage.getItem(estadoActual))
     ?.dataPaisesActual || [...estado.dataPaisesPorDefecto];
 
-  localStorage.removeItem("estado")
-  localStorage.removeItem("estado1")
-
+  //Para eliminar los estados de los usuarios que probaron la aplicacion
+  localStorage.removeItem("estado1");
+  localStorage.removeItem("estado2");
+  localStorage.removeItem("estado3");
 
   actualizarTarifas(estado.dataPaisesActual, tarifas);
   actualizarImportes(estado.dataPaisesActual);
@@ -123,10 +118,6 @@ function RenderizarIUYconfigurarEventos() {
       renderizarTabla(estado.dataPaisesActual);
     });
 
-  document.body.addEventListener("click", () => {
-    localStorage.setItem(estadoActual, JSON.stringify(estado));
-  });
-
   configurarEventosDeOrdenar(".ordenar-importe", ordenarDatosPorImporte);
   configurarEventosDeOrdenar(".ordenar-divisa", ordenarDatosPorDivisa);
   configurarEventosDeOrdenar(".ordenar-pais", ordenarDatosPorPais);
@@ -135,4 +126,8 @@ function RenderizarIUYconfigurarEventos() {
   configurarEventosDeFiltro("lenguajes", "lenguajePais");
   configurarEventosDeFiltro("monedas", "monedaPais");
   configurarEventosDeFiltro("region", "regionPais");
+
+  document.body.addEventListener("click", () => {
+    localStorage.setItem(estadoActual, JSON.stringify(estado));
+  });
 }
