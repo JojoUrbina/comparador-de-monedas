@@ -226,3 +226,10 @@ th:first-child {
 li strong{
   font-weight: bold;
 }
+@media screen and (min-width: 320px) {
+  nav li a {
+    text-align: center;
+  }
+
+
+}
