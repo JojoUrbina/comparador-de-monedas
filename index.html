@@ -3,59 +3,100 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link href="assets/dist/css/bootstrap.min.css" rel="stylesheet" />
-    <link href="assets/dist/css/bootstrap.min.css.map" rel="stylesheet" />
+    <link href="./assets/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="./assets/dist/css/bootstrap.min.css.map" rel="stylesheet" />
     <script src="./assets/dist/js/bootstrap.bundle.min.js"></script>
-
-
-    <!-- Custom styles for this template -->
-
-    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="./styles.css" />
     <title>Proyecto Final</title>
   </head>
   <body>
-    <div class="container">
-      <div class="nav-scroller py-1 mb-3 mt-3 border-bottom border-top">
-        <nav class="nav justify-content-around">
-          <div class="nav justify-content-start">
-            <a class="nav-item" href="#"
-              ><img id="logo" src="icons/icons8-currencies-96.png" alt=""
-            /></a>
-          </div>
-          <div class="nav justify-content-end">
-            <a class="nav-item nav-link link-body-emphasis" href="./index.html">Divisas</a>
-            <a class="nav-item nav-link link-body-emphasis" href="./pages/paises.html"
-              >Países</a
-            >
-            <a class="nav-item nav-link link-body-emphasis" href="./pages/trivia.html"
-              >Trivia</a
-            >
-          </div>
-        </nav>
-      </div>
-    </div>
-    <header>
-      <div class="px-4 py-4 my-5 text-center">
-        <img
-          class="d-block mx-auto mb-4 rounded-5"
-          src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Flag_of_the_United_Nations.svg/300px-Flag_of_the_United_Nations.svg.png"
-          alt=""
-          width="72"
-          height="57"
-        />
-        <h1 class="display-5 fw-bold text-body-emphasis mb-3">
-          Comparador de Países
-        </h1>
-        <div class="col-lg-6 mx-auto">
-          <p class="lead mb-1 fw-normal">
-            Nuestra aplicación <strong>Comparador de Países</strong> te permite
-            explorar y comparar información de la moneda y detallada
-            sobre diversos países del mundo. Obtén datos actualizados y precisos
-            sobre cada nación.
-          </p>
+    <nav class="navbar sticky-top navbar-expand-lg navbar-light bg-light">
+      <div class="container">
+        <a class="navbar-brand" href="./index.html">
+          <img src="icons/icons8-currencies-96.png" alt="Logo" />
+          
+        </a>
+        <button
+          class="navbar-toggler collapsed"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div
+          class="navbar-collapse justify-content-end collapse"
+          id="navbarNav"
+        >
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link" href="./index.html">Divisas</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="./pages/paises.html">Países</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="./pages/trivia.html">Trivia</a>
+            </li>
+          </ul>
         </div>
       </div>
+    </nav>
+
+    <header class="header bg-secondary-subtle">
+      <div class="container">
+        <h1 class="display-4 fw-bold mb-5">Comparador de Países</h1>
+        <p class="lead text-justify">
+          ¡Bienvenido a nuestro <strong>Comparador de Países</strong>! Esta
+          herramienta interactiva está diseñada para ayudarte a explorar y
+          comparar una amplia gama de información sobre diferentes países del
+          mundo. A través de nuestra plataforma, podrás obtener datos
+          actualizados sobre:
+        </p>
+
+        <ul class="list-unstyled lead">
+          <li>
+            <strong >Monedas:</strong> Conoce las divisas oficiales de cada país,
+            sus valores y cómo se comparan con otras monedas.
+          </li>
+          <li>
+            <strong >Idiomas:</strong> Descubre los idiomas predominantes y
+            oficiales de cada nación, crucial para viajeros y negocios
+            internacionales.
+          </li>
+          <li>
+            <strong >Datos geográficos y culturales:</strong> Información sobre
+            ubicación, población y aspectos culturales relevantes de los países.
+          </li>
+        </ul>
+        <p class="lead my-4 fs-4">Nuestra interfaz es fácil de usar, puedes:</p>
+        <ul class="lead">
+          <li>
+            <strong>Seleccionar un país:</strong> Usa el menú desplegable para
+            elegir la divisa del país que deseas investigar.
+          </li>
+          <li>
+            <strong>Explora los datos:</strong> Consulta los detalles sobre la
+            moneda, idioma y otros datos clave del país seleccionado.
+          </li>
+          <li>
+            <strong>Compara:</strong> Añade varios países en favoritos para
+            comparar sus monedas y otras características lado a lado.
+          </li>
+          <li class="text-justify">
+            <strong>Organiza la información:</strong> Usa los filtros y ordena
+            los paises disponibles para enfocarte en regiones específicas,
+            lenguajes más hablados, y divisas más utilizadas.
+          </li>
+        </ul>
+      </div>
     </header>
+
+    <!-- Resto del contenido de tu página -->
+
     <main class="container my-5">
       <div class="container my-5">
         <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
@@ -99,7 +140,7 @@
                   id="btn-filtro-favoritos"
                   class="btn btn-toggle border-0 collapsed"
                 >
-                Países favoritos
+                  Países favoritos
                 </button>
               </li>
               <li class="mb-1">
@@ -109,7 +150,7 @@
                   data-bs-target="#filtro-region"
                   aria-expanded="false"
                 >
-                Región
+                  Región
                 </button>
                 <div class="collapse" id="filtro-region"></div>
               </li>
@@ -235,7 +276,7 @@
         </div>
       </div>
     </main>
-    <footer class="py-5 text-center text-body-secondary bg-body-tertiary">
+    <footer class="py-5 text-center text-body-secondary bg-secondary-subtle">
       <p>
         Comparador de países creado por
         <a href="https://jojourbina.github.io/portafolio-web/" target="_blank"
@@ -246,7 +287,7 @@
         <a href="#">Volver al inicio</a>
       </p>
     </footer>
-    
+
     <noscript> Tu navegador no soporta javascript </noscript>
     <template id="template-tabla-tr">
       <tr>
@@ -275,7 +316,16 @@
             class="bandera img-thumbnail"
           />
         </td>
-        <td class="py-2"><a href="./pages/paises.html" target="_blank" data-pais-seleccionado="El nombre del pais cuando se selecciona el enlace" href="#" class="nav-item nav-link link-body-emphasis text-primary" >Ver más</a></td>
+        <td class="py-2">
+          <a
+            href="./pages/paises.html"
+            target="_blank"
+            data-pais-seleccionado="El nombre del pais cuando se selecciona el enlace"
+            href="#"
+            class="nav-item nav-link link-body-emphasis text-primary"
+            >Ver más</a
+          >
+        </td>
       </tr>
     </template>
     <template id="template-filtros-ul">
@@ -289,7 +339,6 @@
         </li>
       </ul>
     </template>
-    <script src="main.js" type="module"></script>
-
+    <script src="./main.js" type="module"></script>
   </body>
 </html>

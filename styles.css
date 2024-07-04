@@ -2,7 +2,7 @@
   padding: 0;
   margin: 0;
   box-sizing: border-box;
-  transition: all ease-in-out 250m;
+  transition: all ease-in-out 250ms;
 }
 
 /*#region inicio del side menu*/
@@ -17,6 +17,7 @@
   color: var(--bs-emphasis-color);
   background-color: transparent;
 }
+
 .btn-toggle:hover,
 .btn-toggle:focus {
   color: rgba(var(--bs-emphasis-color-rgb), 0.85);
@@ -30,11 +31,12 @@
   transition: transform 0.35s ease;
   transform-origin: 0.5em 50%;
 }
+
 #btn-reiniciar-filtros::before {
   position: relative;
   top: 0.2rem;
   opacity: 0.8;
-  content: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg'   width='16' height='16'  viewBox='0 0 576 512'%3e%3cpath d='M3.9 22.9C10.5 8.9 24.5 0 40 0H472c15.5 0 29.5 8.9 36.1 22.9s4.6 30.5-5.2 42.5L396.4 195.6C316.2 212.1 256 283 256 368c0 27.4 6.3 53.4 17.5 76.5c-1.6-.8 3.2-1.8 4.7-2.9l-64-48c-8.1-6-12.8-15.5-12.8-25.6V288.9L9 65.3C-.7 53.4-2.8 36.8 3.9 22.9zM432 224a144 144 0 1 1 0 288 144 144 0 1 1 0-288zm59.3 107.3c6.2-6.2 6.2-16.4 0-22.6s-16.4-6.2-22.6 0L432 345.4l-36.7-36.7c-6.2-6.2-16.4-6.2-22.6 0s-6.2 16.4 0 22.6L409.4 368l-36.7 36.7c-6.2 6.2-6.2 16.4 0 22.6s16.4 6.2 22.6 0L432 390.6l36.7 36.7c6.2 6.2 16.4 6.2 22.6 0s6.2-16.4 0-22.6L454.6 368l36.7-36.7z'/%3e%3c/svg%3e");
+  content: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16'  viewBox='0 0 576 512'%3e%3cpath d='M3.9 22.9C10.5 8.9 24.5 0 40 0H472c15.5 0 29.5 8.9 36.1 22.9s4.6 30.5-5.2 42.5L396.4 195.6C316.2 212.1 256 283 256 368c0 27.4 6.3 53.4 17.5 76.5c-1.6-.8 3.2-1.8 4.7-2.9l-64-48c-8.1-6-12.8-15.5-12.8-25.6V288.9L9 65.3C-.7 53.4-2.8 36.8 3.9 22.9zM432 224a144 144 0 1 1 0 288 144 144 0 1 1 0-288zm59.3 107.3c6.2-6.2 6.2-16.4 0-22.6s-16.4-6.2-22.6 0L432 345.4l-36.7-36.7c-6.2-6.2-16.4-6.2-22.6 0s-6.2 16.4 0 22.6L409.4 368l-36.7 36.7c-6.2 6.2-6.2 16.4 0 22.6s16.4 6.2 22.6 0L432 390.6l36.7 36.7c6.2 6.2 16.4 6.2 22.6 0s6.2-16.4 0-22.6L454.6 368l36.7-36.7z'/%3e%3c/svg%3e");
 }
 
 [data-bs-theme="dark"] .btn-toggle::before {
@@ -44,6 +46,7 @@
 .btn-toggle[aria-expanded="true"] {
   color: rgba(var(--bs-emphasis-color-rgb), 0.85);
 }
+
 .btn-toggle[aria-expanded="true"]::before {
   transform: rotate(90deg);
 }
@@ -53,6 +56,7 @@
   margin-top: 0.125rem;
   margin-left: 1.25rem;
 }
+
 .btn-toggle-nav a:hover,
 .btn-toggle-nav a:focus {
   background-color: var(--bs-tertiary-bg);
@@ -61,6 +65,7 @@
 .scrollarea {
   overflow-y: auto;
 }
+
 #btn-filtro-favoritos::before {
   position: relative;
   top: 0.15rem;
@@ -71,6 +76,7 @@
 /*#endregion del side menu*/
 
 /*#region Estilos de las estrellas*/
+
 #estrella-th {
   position: relative;
   top: -2px;
@@ -78,6 +84,7 @@
   fill-opacity: 1;
   margin-right: 10px !important;
 }
+
 .estrella {
   position: relative;
   top: -2px;
@@ -101,6 +108,7 @@
 .estrella:hover {
   fill-opacity: 1;
 }
+
 /*#endregion*/
 
 a:hover {
@@ -112,16 +120,20 @@ a:hover {
 td {
   max-width: 130px;
 }
+
 th {
   min-width: 6rem;
 }
+
 th:first-child {
   min-width: auto;
 }
+
 .bandera {
   width: 4em;
   transition: transform 0.3s ease-in-out;
 }
+
 .bandera:hover {
   transform: scale(2.5);
 }
@@ -129,15 +141,86 @@ th:first-child {
 #logo {
   width: 2.5rem;
 }
+
 .btn-ordenar svg {
   width: 8px;
 }
+
 .btn-filtro {
   margin-left: 2rem !important;
 }
+
 .btn-ordenar {
   background-color: transparent;
   border: none;
   padding: 0;
   margin-left: 0.2rem;
+}
+
+header .lead,
+header ul,
+header ol {
+  text-align: left;
+}
+
+header ul,
+header ol {
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
+
+header ul li,
+header ol li {
+  margin-bottom: 0.5rem;
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+  background-color: #f8f9fa;
+  color: #495057;
+}
+
+.navbar {
+  background-color: #ffffff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-brand img {
+  width: 40px;
+  height: 40px;
+  margin-right: 10px;
+}
+
+.navbar-nav .nav-link {
+  color: #495057;
+  font-weight: 500;
+}
+
+.navbar-nav .nav-link:hover {
+  color: #007bff;
+}
+
+.header {
+  color: #495057;
+  padding: 100px 0;
+  text-align: center;
+}
+
+.header h1 {
+  font-size: 3.5rem;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+
+.text-justify {
+  text-align: justify !important;
+}
+@media screen and (min-width: 1200px) {
+  .header {
+    height: 100vh;
+  }
+}
+li strong{
+  font-weight: bold;
 }

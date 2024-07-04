@@ -3,6 +3,7 @@ const estado = JSON.parse(localStorage.getItem(estadoActual));
 const estadoEstadisticasTrivia = { puntos: 0, contador: 0 };
 estadoEstadisticasTrivia.maximoPuntaje =
   +localStorage.getItem("maximoPuntajeTrivia") || 0;
+  
 document.addEventListener("DOMContentLoaded", () => {
   iniciarApp();
 });
