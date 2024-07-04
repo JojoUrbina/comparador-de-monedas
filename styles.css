@@ -218,11 +218,7 @@ th:first-child {
 .text-justify {
   text-align: justify !important;
 }
-@media screen and (min-width: 1200px) {
-  .header {
-    height: 100vh;
-  }
-}
+
 li strong{
   font-weight: bold;
 }
