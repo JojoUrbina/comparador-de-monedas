@@ -5,6 +5,62 @@
   transition: all ease-in-out 250ms;
 }
 
+header .lead,
+header ul,
+header ol {
+  text-align: left;
+}
+
+header ul,
+header ol {
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
+
+header ul li,
+header ol li {
+  margin-bottom: 0.5rem;
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+  background-color: #f8f9fa;
+  color: #495057;
+}
+
+.navbar {
+  background-color: #ffffff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-brand img {
+  width: 40px;
+  height: 40px;
+  margin-right: 10px;
+}
+
+.navbar-nav .nav-link {
+  color: #495057;
+  font-weight: 500;
+}
+
+.navbar-nav .nav-link:hover {
+  color: #007bff;
+}
+
+.header {
+  color: #495057;
+  padding: 100px 0;
+  text-align: center;
+}
+
+.header h1 {
+  font-size: 3.5rem;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+
 /*#region inicio del side menu*/
 
 .dropdown-toggle {
@@ -157,60 +213,6 @@ th:first-child {
   margin-left: 0.2rem;
 }
 
-header .lead,
-header ul,
-header ol {
-  text-align: left;
-}
-
-header ul,
-header ol {
-  margin-top: 0;
-  margin-bottom: 1rem;
-}
-
-header ul li,
-header ol li {
-  margin-bottom: 0.5rem;
-}
-
-body {
-  font-family: "Roboto", sans-serif;
-  background-color: #f8f9fa;
-  color: #495057;
-}
-
-.navbar {
-  background-color: #ffffff;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.navbar-brand img {
-  width: 40px;
-  height: 40px;
-  margin-right: 10px;
-}
-
-.navbar-nav .nav-link {
-  color: #495057;
-  font-weight: 500;
-}
-
-.navbar-nav .nav-link:hover {
-  color: #007bff;
-}
-
-.header {
-  color: #495057;
-  padding: 100px 0;
-  text-align: center;
-}
-
-.header h1 {
-  font-size: 3.5rem;
-  font-weight: 700;
-  margin-bottom: 20px;
-}
 
 
 .text-justify {
