@@ -1,3 +1,5 @@
+/*#region Respuestas */
+
 .list-group {
   width: 100%;
   max-width: 350px;
@@ -86,6 +88,8 @@
 strong.card-title{
   font-size: 5rem !important;
 }
+/*#endregion Respuestas */
+
 /*#region inicio btn-iniciar-trivia*/
 button {
   display: flex;

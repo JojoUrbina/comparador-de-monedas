@@ -28,7 +28,7 @@ h6 {
   margin-bottom: 1.25rem;
   color: #727272;
 }
-.carousel-item{
+.carousel-item {
   padding: 2rem;
   width: 100%;
   height: 26rem;
@@ -41,7 +41,6 @@ h6 {
   height: 100%;
 }
 
-
 .bd-mode-toggle {
   z-index: 1500;
 }
@@ -50,17 +49,17 @@ h6 {
   display: block !important;
 }
 .bi {
-  vertical-align: -.125em;
+  vertical-align: -0.125em;
   fill: currentColor;
 }
-#caracteristicas-secundarias-zonaHoraria{
-  width: 16rem
+#caracteristicas-secundarias-zonaHoraria {
+  width: 16rem;
 }
 
 .enlance-masPaises img {
   object-position: center;
   object-fit: contain;
-   width: 50%;
+  width: 50%;
 }
 @media (min-width: 768px) {
   .h-md-250 {
@@ -68,11 +67,9 @@ h6 {
   }
 }
 @media (max-width: 425px) {
-
   .enlance-masPaises img {
     object-position: center;
     object-fit: cover;
-     width: 100%;
+    width: 100%;
   }
- 
 }
