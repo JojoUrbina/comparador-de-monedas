@@ -4,7 +4,7 @@ export async function fetchPaises() {
     return data;
   }
  export async function fetchTarifas(tarifa) {
-  //cambiar la segunda eleccion de url por la apiUrl con eur directamente
+  //En caso de querer hacer pruebas, no se enviara argumento para trabajar con el json local.
     const apiUrl = `https://open.er-api.com/v6/latest/${tarifa}`;
     const url = tarifa ? apiUrl : `./json/divisas.json`;
     const res = await fetch(url);

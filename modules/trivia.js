@@ -1,5 +1,5 @@
-const estadoActual = "estado";
-const estado = JSON.parse(localStorage.getItem(estadoActual));
+const nombreEstadoActual = "estado";
+const estado = JSON.parse(localStorage.getItem(nombreEstadoActual));
 const estadoEstadisticasTrivia = { puntos: 0, contador: 0 };
 estadoEstadisticasTrivia.maximoPuntaje =
   +localStorage.getItem("maximoPuntajeTrivia") || 0;
@@ -134,7 +134,7 @@ function generarRespuestasTrivia(estado) {
   
 )
 for (let i = 0; i < 3; i++) console.log("se barajea 3 veces");
-  localStorage.setItem(estadoActual, JSON.stringify(estado));
+  localStorage.setItem(nombreEstadoActual, JSON.stringify(estado));
   return estado.dataTrivia.respuestas;
 }
 
@@ -166,7 +166,7 @@ function mostrarBanderaTrivia(pais) {
 function alternarPaisCorrectoTrivia(estado, indice) {
   estado.dataPaisesActual.forEach((pais) => (pais.paisCorrectoTrivia = false));
   estado.dataPaisesActual[indice].paisCorrectoTrivia = true;
-  localStorage.setItem(estadoActual, JSON.stringify(estado));
+  localStorage.setItem(nombreEstadoActual, JSON.stringify(estado));
 }
 
 function actualizarEstadisticaPuntuacion(isRespuestaCorrecta) {

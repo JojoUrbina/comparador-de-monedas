@@ -31,7 +31,7 @@ document.addEventListener("DOMContentLoaded", () => {
   iniciarApp();
 });
 
-const estadoActual = "estado";
+const nombreEstadoActual = "estado";
 export const estado = {
   dataPaisesPorDefecto: [],
   dataPaisesFiltrados: null,
@@ -44,14 +44,14 @@ export const estado = {
 
 async function iniciarApp() {
   const paises = await fetchPaises();
-  const tarifas = await fetchTarifas();
+  const tarifas = await fetchTarifas("EUR");
   const paisesConTarifa = filtrarPaisesConTarifa(paises, tarifas);
 
   estado.dataPaisesPorDefecto = crearDatosPrincipales(paisesConTarifa, tarifas);
-  estado.dataPaisesActual = JSON.parse(localStorage.getItem(estadoActual))
+  estado.dataPaisesActual = JSON.parse(localStorage.getItem(nombreEstadoActual))
     ?.dataPaisesActual || [...estado.dataPaisesPorDefecto];
 
-  //Para eliminar los estados de los usuarios que probaron la aplicacion
+  //Para eliminar los estados de los usuarios que probaron la aplicacion antes de la versión final
   localStorage.removeItem("estado1");
   localStorage.removeItem("estado2");
   localStorage.removeItem("estado3");
@@ -128,6 +128,6 @@ function RenderizarIUYconfigurarEventos() {
   configurarEventosDeFiltro("region", "regionPais");
 
   document.body.addEventListener("click", () => {
-    localStorage.setItem(estadoActual, JSON.stringify(estado));
+    localStorage.setItem(nombreEstadoActual, JSON.stringify(estado));
   });
 }
