@@ -1,6 +1,13 @@
 const nombreEstadoActual = "estado";
 const estado = JSON.parse(localStorage.getItem(nombreEstadoActual));
 
+renderizarBlog(estado);
+window.addEventListener("storage", (event) => {
+  if (event.key === nombreEstadoActual) {
+    const estado = JSON.parse(localStorage.getItem(nombreEstadoActual));
+    renderizarBlog(estado);
+  }
+});
 function renderizarBlog(estado) {
   const paisSeleccionado =
     estado.dataPaisesActual.find((pais) => pais.blogPais) ||
@@ -103,8 +110,6 @@ function renderizarBlog(estado) {
   setCountry(paisSeleccionado.nombrePais);
 }
 
-renderizarBlog(estado);
-
 function actualizarTextoElemento(elemento, texto) {
   const elementoSeleccionado = document.querySelector(`${elemento}`);
   if (texto) {
@@ -135,7 +140,6 @@ function renderizarPaisesRandom() {
     "#lista-paises-random li"
   );
   const indicesUtilizados = new Set();
-  console.log(indicesUtilizados);
 
   listaPaisesRandom.forEach((li) => {
     asignarPaisAleatorio(li, indicesUtilizados);
@@ -200,3 +204,4 @@ function setCountry(country) {
   url.searchParams.set("pais", country);
   window.history.pushState({}, "", url);
 }
+
