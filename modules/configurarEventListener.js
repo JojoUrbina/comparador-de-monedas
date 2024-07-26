@@ -1,6 +1,8 @@
 import { filtrarPaisesPorCategoria } from "./funcionesFiltrar.js";
 import { renderizarTabla } from "./funcionesRenderizar.js";
+import { actualizarTablaYPaginacion } from "./paginacion.js";
 import { estado } from "../main.js";
+
 
 export function configurarEventosDeFiltro(categoria, propiedadPais) {
   document.querySelectorAll(`.btn-filtro-${categoria}`).forEach((btn) => {
@@ -11,15 +13,18 @@ export function configurarEventosDeFiltro(categoria, propiedadPais) {
         propiedadPais,
         dataSetValor
       );
-      renderizarTabla(estado.dataPaisesFiltrados);
+      estado.paginaActual = 1;
+      estado.dataOrdenada = null;
+      actualizarTablaYPaginacion();
     });
   });
 }
 export function configurarEventosDeOrdenar(selector, funcionOrdenar) {
   document.querySelector(selector).addEventListener("click", () => {
-    renderizarTabla(
-      funcionOrdenar(estado.dataPaisesFiltrados || estado.dataPaisesActual)
+    estado.dataOrdenada = funcionOrdenar(
+      estado.dataPaisesFiltrados || estado.dataPaisesActual
     );
+    actualizarTablaYPaginacion(estado.dataOrdenada);
   });
 }
 
@@ -55,9 +60,9 @@ export function alternarFavorito(e) {
         !estado.dataPaisesActual[index].paisFavorito;
 
       //esto se puede colocar en el boton, para que me filtre solo los true
-          estado.dataPaisesFavoritos = estado.dataPaisesActual.filter(
+      estado.dataPaisesFavoritos = estado.dataPaisesActual.filter(
         (pais) => pais.paisFavorito === true
-      )   
+      );
 
       renderizarTabla(estado.dataPaisesFiltrados || estado.dataPaisesActual);
     }
@@ -65,7 +70,6 @@ export function alternarFavorito(e) {
 }
 export function alternarBlogPais(e) {
   const datasetPaisSeleccionado = e.srcElement.dataset.paisSeleccionado;
-  console.log(datasetPaisSeleccionado);
 
   if (datasetPaisSeleccionado) {
     const index = estado.dataPaisesActual.findIndex(
@@ -73,9 +77,9 @@ export function alternarBlogPais(e) {
     );
 
     if (index !== -1) {
-      estado.dataPaisesActual.forEach(pais =>pais.blogPais = false)
-      estado.dataPaisesActual[index].blogPais =true;
-     // renderizarTabla(estado.dataPaisesFiltrados || estado.dataPaisesActual);
+      estado.dataPaisesActual.forEach((pais) => (pais.blogPais = false));
+      estado.dataPaisesActual[index].blogPais = true;
+      // renderizarTabla(estado.dataPaisesFiltrados || estado.dataPaisesActual);
     }
-  } 
+  }
 }

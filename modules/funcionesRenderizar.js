@@ -1,3 +1,4 @@
+
 export function renderizarOpcionesSelect(data) {
   function ordenarPaisesPorOrdenAlfabetico(data) {
     const paisesConTarifaOrdenados = [...data];
@@ -53,7 +54,7 @@ export function renderizarTabla(data) {
     const filaClonada = templateClonado.querySelector("tr");
     const celdasClonadas = templateClonado.querySelectorAll("td");
     const estrella = celdasClonadas[0].querySelector("svg");
-    const btnEstrella = estrella.querySelector("path")
+    const btnEstrella = estrella.querySelector("path");
 
     filaClonada.addEventListener("mouseover", () => {
       estrella.classList.add("estrella-opaca");
@@ -74,11 +75,10 @@ export function renderizarTabla(data) {
     celdasClonadas[5].textContent = lenguajePais.join(", ");
     celdasClonadas[6].querySelector("img").src = srcBanderaPais;
     celdasClonadas[6].querySelector("img").alt = altBanderaPais;
-    celdasClonadas[7].querySelector("a").dataset.paisSeleccionado = nombrePais
+    celdasClonadas[7].querySelector("a").dataset.paisSeleccionado = nombrePais;
     fragment.appendChild(templateClonado);
   }
   tbody.appendChild(fragment);
- 
 }
 
 export function renderizarFiltros(categoria, datos) {

@@ -26,6 +26,7 @@ import {
   alternarFavorito,
   alternarBlogPais,
 } from "./modules/configurarEventListener.js";
+import { actualizarTablaYPaginacion } from "./modules/paginacion.js";
 
 document.addEventListener("DOMContentLoaded", () => {
   iniciarApp();
@@ -40,6 +41,8 @@ export const estado = {
   dataTrivia: {
     respuestas: [],
   },
+  paginaActual: 1,
+  dataOrdenada: null,
 };
 
 async function iniciarApp() {
@@ -58,7 +61,8 @@ async function iniciarApp() {
 
   actualizarTarifas(estado.dataPaisesActual, tarifas);
   actualizarImportes(estado.dataPaisesActual);
-  renderizarTabla(estado.dataPaisesActual);
+  //renderizarTabla(estado.dataPaisesActual);
+  actualizarTablaYPaginacion();
   actualizarPlaceholder();
   RenderizarIUYconfigurarEventos();
 }
@@ -107,15 +111,20 @@ function RenderizarIUYconfigurarEventos() {
         (pais) => pais.paisFavorito === true
       );
       estado.dataPaisesFiltrados = [...estado.dataPaisesFavoritos];
+      estado.dataOrdenada = null;
+      estado.paginaActual = 1;
+      actualizarTablaYPaginacion();
 
-      renderizarTabla(estado.dataPaisesFiltrados);
     });
 
   document
     .querySelector("#btn-reiniciar-filtros")
     .addEventListener("click", () => {
       estado.dataPaisesFiltrados = null;
-      renderizarTabla(estado.dataPaisesActual);
+      estado.dataOrdenada = null;
+      estado.paginaActual = 1;
+      document.querySelector("#input-buscar").value = ""
+      actualizarTablaYPaginacion();
     });
 
   configurarEventosDeOrdenar(".ordenar-importe", ordenarDatosPorImporte);
@@ -127,7 +136,46 @@ function RenderizarIUYconfigurarEventos() {
   configurarEventosDeFiltro("monedas", "monedaPais");
   configurarEventosDeFiltro("region", "regionPais");
 
+  /* export function configurarEventosDeFiltro(categoria, propiedadPais) {
+  document.querySelectorAll(`.btn-filtro-${categoria}`).forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const dataSetValor = btn.dataset.btnValor;
+      estado.dataPaisesFiltrados = filtrarPaisesPorCategoria(
+        estado.dataPaisesActual,
+        propiedadPais,
+        dataSetValor
+      );
+      estado.paginaActual = 1;
+      estado.dataOrdenada = null;
+      actualizarTablaYPaginacion();
+    });
+  });
+} */
+
+  document.querySelector("#input-buscar").addEventListener("input", (e) => {
+    e.preventDefault();
+    const inputValue = e.target.value;
+
+    const paisFiltrado = estado.dataPaisesActual.filter((pais) =>
+      eliminarAcentos(pais.nombrePais.toLowerCase()).includes(
+        eliminarAcentos(inputValue.toLowerCase())
+      )
+    );
+
+    estado.paginaActual = 1;
+    estado.dataOrdenada = null;
+    estado.dataPaisesFiltrados = paisFiltrado;
+    actualizarTablaYPaginacion();
+  });
+  document.querySelector("#input-buscar").addEventListener("keydown", (e) => {
+    if (e.key === "Enter") {
+      e.preventDefault();
+    }
+  });
   document.body.addEventListener("click", () => {
     localStorage.setItem(nombreEstadoActual, JSON.stringify(estado));
   });
+  console.log(estado.dataPaisesActual);
 }
+const eliminarAcentos = (str) =>
+  str.normalize("NFD").replace(/[\u0300-\u036f]/g, "");

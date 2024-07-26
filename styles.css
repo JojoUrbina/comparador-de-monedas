@@ -60,7 +60,6 @@ body {
   margin-bottom: 20px;
 }
 
-
 /*#region inicio del side menu*/
 
 .dropdown-toggle {
@@ -213,19 +212,18 @@ th:first-child {
   margin-left: 0.2rem;
 }
 
-
-
 .text-justify {
   text-align: justify !important;
 }
 
-li strong{
+li strong {
   font-weight: bold;
+}
+.pagination {
+  flex-wrap: wrap;
 }
 @media screen and (min-width: 320px) {
   nav li a {
     text-align: center;
   }
-
-
 }

@@ -3,7 +3,7 @@ const estado = JSON.parse(localStorage.getItem(nombreEstadoActual));
 const estadoEstadisticasTrivia = { puntos: 0, contador: 0 };
 estadoEstadisticasTrivia.maximoPuntaje =
   +localStorage.getItem("maximoPuntajeTrivia") || 0;
-  
+
 document.addEventListener("DOMContentLoaded", () => {
   iniciarApp();
 });
@@ -105,7 +105,7 @@ function crearNuevaTrivia(estado) {
   const indiceAleatorio = obtenerIndiceAleatorio(estado);
   alternarPaisCorrectoTrivia(estado, indiceAleatorio);
   mostrarBanderaTrivia(estado.dataPaisesActual[indiceAleatorio]);
-  renderizarOpcionesTrivia(generarRespuestasTrivia(estado));
+  renderizarRespuestasTrivia(generarRespuestasTrivia(estado));
   reiniciarEstilos();
   habilitarRespuestas();
 }
@@ -120,25 +120,29 @@ function generarRespuestasTrivia(estado) {
   const respuestaCorrecta = estado.dataPaisesActual.find(
     (pais) => pais.paisCorrectoTrivia
   ).nombrePais;
-  const opciones = [
-    obtenerNombreAleatorioPais(estado),
-    respuestaCorrecta,
-    obtenerNombreAleatorioPais(estado),
-  ];
 
-  // Ordena las opciones de manera aleatoria dos veces para aumentar la aleatoriedad
-  estado.dataTrivia.respuestas = [...opciones]
+  const opciones = generarOpcionesUnicas(respuestaCorrecta).sort(
+    () => Math.random() - 0.5
+  );
 
- for (let i = 0; i < 3; i++) estado.dataTrivia.respuestas.sort(
-  (opcion) => Math.round(Math.random() * 2) - 1
-  
-)
-for (let i = 0; i < 3; i++) console.log("se barajea 3 veces");
+  estado.dataTrivia.respuestas = [...opciones];
   localStorage.setItem(nombreEstadoActual, JSON.stringify(estado));
   return estado.dataTrivia.respuestas;
 }
+function generarOpcionesUnicas(respuestaCorrecta) {
+  const opciones = [respuestaCorrecta];
 
-function renderizarOpcionesTrivia(opcionesAlAzar) {
+  while (opciones.length < 3) {
+    const respuestaAleatoria = obtenerNombreAleatorioPais(estado);
+
+    if (!opciones.includes(respuestaAleatoria)) {
+      opciones.push(respuestaAleatoria);
+    }
+  }
+  return opciones;
+}
+
+function renderizarRespuestasTrivia(opcionesAlAzar) {
   const elementosOpciones = document.querySelectorAll("span.list-group-item ");
 
   for (const [indice, elemento] of opcionesAlAzar.entries()) {

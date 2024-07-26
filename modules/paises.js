@@ -1,5 +1,5 @@
 const nombreEstadoActual = "estado";
-const estado = JSON.parse(localStorage.getItem(nombreEstadoActual ));
+const estado = JSON.parse(localStorage.getItem(nombreEstadoActual));
 
 function renderizarBlog(estado) {
   const paisSeleccionado =
@@ -82,9 +82,9 @@ function renderizarBlog(estado) {
     paisSeleccionado.nombrePais
   );
 
-  const hasGini = paisSeleccionado.giniPais
+  const hasGini = paisSeleccionado.giniPais;
 
-  const posicionGiniPais = hasGini 
+  const posicionGiniPais = hasGini
     ? calcularPosicionPaisPorGini(
         estado.dataPaisesActual,
         "giniPais",
@@ -100,7 +100,7 @@ function renderizarBlog(estado) {
     posicionPoblacionPais + "°"
   );
   actualizarTextoElemento("#caracteristicas-posicion-gini", posicionGiniPais);
-  setCountry(paisSeleccionado.nombrePais)
+  setCountry(paisSeleccionado.nombrePais);
 }
 
 renderizarBlog(estado);
@@ -130,22 +130,33 @@ function actualizarEnlaceElemento(elemento, enlace) {
   elementoSeleccionado.href = enlace;
 }
 
-function renderizarPaisesRandom(estado) {
+function renderizarPaisesRandom() {
   const listaPaisesRandom = document.querySelectorAll(
     "#lista-paises-random li"
   );
+  const indicesUtilizados = new Set();
+  console.log(indicesUtilizados);
+
   listaPaisesRandom.forEach((li) => {
-    const indiceRandom = Math.round(
-      Math.random() * estado.dataPaisesActual.length
-    );
-    const paisRandom = estado.dataPaisesActual[indiceRandom];
-    li.dataset.paisSeleccionado = paisRandom.nombrePais;
-    li.addEventListener("click", () => {
-      alternarBlogPaisRandom(estado, indiceRandom);
-    });
-    li.querySelector("img").src = paisRandom.srcBanderaPais;
-    li.querySelector("h6").textContent = paisRandom.nombrePais;
+    asignarPaisAleatorio(li, indicesUtilizados);
   });
+}
+
+function asignarPaisAleatorio(li, indicesUtilizados) {
+  const indiceRandom = Math.round(
+    Math.random() * estado.dataPaisesActual.length
+  );
+  if (indicesUtilizados.has(indiceRandom)) {
+    return asignarPaisAleatorio(li, indicesUtilizados);
+  }
+  indicesUtilizados.add(indiceRandom);
+  const paisRandom = estado.dataPaisesActual[indiceRandom];
+  li.dataset.paisSeleccionado = paisRandom.nombrePais;
+  li.addEventListener("click", () => {
+    alternarBlogPaisRandom(estado, indiceRandom);
+  });
+  li.querySelector("img").src = paisRandom.srcBanderaPais;
+  li.querySelector("h6").textContent = paisRandom.nombrePais;
 }
 
 function calcularPosicionPaisPorPropiedad(
@@ -163,7 +174,6 @@ function calcularPosicionPaisPorPropiedad(
   );
 
   return posicionPais + 1;
-
 }
 function calcularPosicionPaisPorGini(dataPaises, propiedad, nombreDelPais) {
   const paises = [...dataPaises];
@@ -180,13 +190,13 @@ function calcularPosicionPaisPorGini(dataPaises, propiedad, nombreDelPais) {
 function alternarBlogPaisRandom(estado, indice) {
   estado.dataPaisesActual.forEach((pais) => (pais.blogPais = false));
   estado.dataPaisesActual[indice].blogPais = true;
-  localStorage.setItem(nombreEstadoActual , JSON.stringify(estado));
+  localStorage.setItem(nombreEstadoActual, JSON.stringify(estado));
 }
 
-//Se uso chatGPT para esta funcion 
+//Se uso chatGPT para esta funcion
 //le agrega a la url el parametro del pais
 function setCountry(country) {
   const url = new URL(window.location.href);
-  url.searchParams.set('pais', country);
-  window.history.pushState({}, '', url)
+  url.searchParams.set("pais", country);
+  window.history.pushState({}, "", url);
 }
