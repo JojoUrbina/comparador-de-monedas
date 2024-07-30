@@ -85,7 +85,8 @@ function RenderizarIUYconfigurarEventos() {
   );
   document.querySelector("input#monto").addEventListener("input", (e) => {
     actualizarImportes(estado.dataPaisesActual);
-    renderizarTabla(estado.dataPaisesFiltrados || estado.dataPaisesActual);
+    //renderizarTabla(estado.dataPaisesFiltrados || estado.dataPaisesActual);
+    actualizarTablaYPaginacion();
   });
 
   document
@@ -98,7 +99,11 @@ function RenderizarIUYconfigurarEventos() {
 
       actualizarTarifas(estado.dataPaisesActual, tarifas);
       actualizarImportes(estado.dataPaisesActual);
-      renderizarTabla(estado.dataPaisesFiltrados || estado.dataPaisesActual);
+      //renderizarTabla(estado.dataPaisesFiltrados || estado.dataPaisesActual);
+      estado.paginaActual = 1;
+      estado.dataOrdenada = null;
+      estado.dataPaisesFiltrados = paisFiltrado;
+      actualizarTablaYPaginacion();
     });
 
   document.querySelector("tbody").addEventListener("click", alternarFavorito);
@@ -114,7 +119,6 @@ function RenderizarIUYconfigurarEventos() {
       estado.dataOrdenada = null;
       estado.paginaActual = 1;
       actualizarTablaYPaginacion();
-
     });
 
   document
@@ -123,7 +127,7 @@ function RenderizarIUYconfigurarEventos() {
       estado.dataPaisesFiltrados = null;
       estado.dataOrdenada = null;
       estado.paginaActual = 1;
-      document.querySelector("#input-buscar").value = ""
+      document.querySelector("#input-buscar").value = "";
       actualizarTablaYPaginacion();
     });
 
@@ -135,22 +139,6 @@ function RenderizarIUYconfigurarEventos() {
   configurarEventosDeFiltro("lenguajes", "lenguajePais");
   configurarEventosDeFiltro("monedas", "monedaPais");
   configurarEventosDeFiltro("region", "regionPais");
-
-  /* export function configurarEventosDeFiltro(categoria, propiedadPais) {
-  document.querySelectorAll(`.btn-filtro-${categoria}`).forEach((btn) => {
-    btn.addEventListener("click", () => {
-      const dataSetValor = btn.dataset.btnValor;
-      estado.dataPaisesFiltrados = filtrarPaisesPorCategoria(
-        estado.dataPaisesActual,
-        propiedadPais,
-        dataSetValor
-      );
-      estado.paginaActual = 1;
-      estado.dataOrdenada = null;
-      actualizarTablaYPaginacion();
-    });
-  });
-} */
 
   document.querySelector("#input-buscar").addEventListener("input", (e) => {
     e.preventDefault();
@@ -175,7 +163,6 @@ function RenderizarIUYconfigurarEventos() {
   document.body.addEventListener("click", () => {
     localStorage.setItem(nombreEstadoActual, JSON.stringify(estado));
   });
-  console.log(estado.dataPaisesActual);
 }
 const eliminarAcentos = (str) =>
   str.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
