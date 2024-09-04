@@ -19,6 +19,7 @@
 
 .list-group-checkable .list-group-item {
   cursor: pointer;
+  color: white;
 }
 .list-group-item-check {
   position: absolute;
@@ -28,7 +29,7 @@
   background-color: var(--bs-secondary-bg);
 }
 .list-group-item-check:checked + .list-group-item {
-  color: #fff;
+  color: #fff ;
   background-color: var(--bs-primary);
   border-color: var(--bs-primary);
 }
@@ -91,7 +92,7 @@ strong.card-title{
 /*#endregion Respuestas */
 
 /*#region inicio btn-iniciar-trivia*/
-button {
+button#btn-iniciar-trivia {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -113,12 +114,12 @@ button {
   height: 3rem;
 }
 
-button:active {
+button#btn-iniciar-trivia:active {
   transform: scale(0.9);
   transition: all 100ms ease;
 }
 
-button svg {
+button#btn-iniciar-trivia svg {
   transition: all 0.5s ease;
   z-index: 2;
   height: 100%;
@@ -129,7 +130,7 @@ button svg {
   transition-delay: 300ms;
 }
 
-button:hover svg {
+button#btn-iniciar-trivia:hover svg {
   transform: scale(3) translate(90%);
 }
 
@@ -141,13 +142,16 @@ button:hover svg {
   z-index: 2;
 }
 
-button:hover .now {
+button#btn-iniciar-trivia:hover .now {
   transform: translateX(10px);
   transition-delay: 300ms;
 }
 
-button:hover .play {
+button#btn-iniciar-trivia:hover .play {
   transform: translateX(200%);
   transition-delay: 300ms;
 }
 /*#endregion btn-iniciar-trivia*/
+/* .list-group-item{
+color: initial !important;
+} */
