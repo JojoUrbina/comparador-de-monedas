@@ -29,11 +29,10 @@ body {
 }
 
 .navbar {
-  /*background-color: #ffffff
-  border-style: none !important antes era solid;
-  */
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  border-style: none !important;
+  /*background-color: #ffffff*/
+  
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1) !important;
+  height: 3.5em;
 }
 
 .navbar-brand img {
