@@ -25,31 +25,32 @@ header ol li {
 body {
   font-family: "Roboto", sans-serif;
   background-color: #f8f9fa;
-  color: #495057;
+  /*color: #495057;*/
 }
 
 .navbar {
-  background-color: #ffffff;
+  /*background-color: #ffffff
+  border-style: none !important antes era solid;
+  */
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border-style: none !important;
 }
 
 .navbar-brand img {
-  width: 40px;
-  height: 40px;
-  margin-right: 10px;
+  width: 30px;
 }
 
 .navbar-nav .nav-link {
-  color: #495057;
+  /*color: #495057;*/
   font-weight: 500;
 }
 
 .navbar-nav .nav-link:hover {
-  color: #007bff;
+  color: white 
 }
 
 .header {
-  color: #495057;
+ /* color: #495057;*/
   padding: 100px 0;
   text-align: center;
 }

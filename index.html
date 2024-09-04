@@ -3,15 +3,28 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link href="./assets/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <!-- <link href="./assets/dist/css/bootstrap.min.css" rel="stylesheet" />
     <link href="./assets/dist/css/bootstrap.min.css.map" rel="stylesheet" />
+    <script src="./assets/dist/js/bootstrap.bundle.min.js"></script>-->
     <script src="./assets/dist/js/bootstrap.bundle.min.js"></script>
+
     <link rel="stylesheet" href="./styles.css" />
     <title>Comparador de países</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootswatch/4.5.2/darkly/bootstrap.min.css"
+    />
+    
+    
   </head>
   <body>
-    <nav class="navbar sticky-top navbar-expand-lg navbar-light bg-light">
-      <div class="container">
+    <!--<nav class="navbar sticky-top navbar-expand-lg navbar-light bg-light">-->
+    <nav class="navbar sticky-top navbar-expand-lg navbar-light bg-primary">
+      <div class="container-fluid">
         <a class="navbar-brand" href="./index.html">
           <img src="icons/icons8-currencies-96.png" alt="Logo" />
         </a>
@@ -32,20 +45,21 @@
         >
           <ul class="navbar-nav">
             <li class="nav-item">
-              <a class="nav-link" href="./index.html">Divisas</a>
+              <a class="nav-link text-success" href="./index.html">Divisas</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="./pages/paises.html">Países</a>
+              <a class="nav-link text-success" href="./pages/paises.html">Países</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="./pages/trivia.html">Trivia</a>
+              <a class="nav-link text-success" href="./pages/trivia.html">Trivia</a>
             </li>
           </ul>
         </div>
       </div>
     </nav>
 
-    <header class="header bg-secondary-subtle">
+    <!--<header class="header bg-secondary-subtle">-->
+    <header class="header">
       <div class="container">
         <h1 class="display-4 fw-bold mb-5">Comparador de Países</h1>
         <p class="lead text-justify">
@@ -91,9 +105,11 @@
             lenguajes más hablados, y divisas más utilizadas.
           </li>
           <li class="text-justify">
-            <strong>Buscar País:</strong> Utiliza el filtro de búsqueda para encontrar rápidamente cualquier país por su nombre. Simplemente ingresa el nombre del país en el campo de búsqueda y obtén resultados instantáneos. 
+            <strong>Buscar País:</strong> Utiliza el filtro de búsqueda para
+            encontrar rápidamente cualquier país por su nombre. Simplemente
+            ingresa el nombre del país en el campo de búsqueda y obtén
+            resultados instantáneos.
           </li>
-          
         </ul>
       </div>
     </header>
@@ -117,22 +133,23 @@
               class="form-control"
             />
           </div>
-          <select
-            id="seleccionarPais"
-            class="form-select"
-            aria-label="Default select example"
-          >
-            <option selected value="EUR" class="€" aria-label="Euro">
-              Seleccione un país y compara su moneda
-            </option>
-          </select>
+            <select
+              id="seleccionarPais"
+              class="form-select w-100"
+              aria-label="Default select example"
+            >
+              <option selected value="EUR" class="€" aria-label="Euro">
+                Seleccione un país y compara su moneda
+              </option>
+            </select>
         </div>
       </div>
 
       <div class="row">
         <!--Inicio Side menu-->
         <div class="col-lg-3">
-          <div id="sidemenu" class="p-3 bg-light rounded">
+          <!--<div id="sidemenu" class="p-3 bg-light rounded">-->
+          <div id="sidemenu" class="p-3 rounded">
             <span class="px-2 fs-5 fw-semibold pb-3 mb-3">Filtrar por:</span>
 
             <li class="border-top my-3 list-unstyled"></li>
@@ -188,7 +205,7 @@
                 >
                   Lenguajes más usados:
                 </button>
-                <div class="collapse " id="filtro-lenguajes"></div>
+                <div class="collapse" id="filtro-lenguajes"></div>
               </li>
               <li class="mb-1">
                 <button
@@ -219,7 +236,7 @@
         <div class="col-lg-9">
           <div class="table-responsive table-container rounded-top-1">
             <table class="table table-hover table-sm">
-              <thead class="table-light">
+              <thead class="table-primary">
                 <tr>
                   <th scope="col">
                     <svg
@@ -304,7 +321,8 @@
         </div>
       </div>
     </main>
-    <footer class="py-5 text-center text-body-secondary bg-secondary-subtle ">
+    <!--<footer class="py-5 text-center text-body-secondary bg-secondary-subtle ">-->
+    <footer class="py-5 text-center text-body-secondary bg-primary">
       <p>
         Comparador de países creado por
         <a href="https://jojourbina.github.io/portafolio-web/" target="_blank"
@@ -368,5 +386,8 @@
       </ul>
     </template>
     <script src="./main.js" type="module"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
   </body>
 </html>

@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <link href="../assets/dist/css/bootstrap.min.css" rel="stylesheet" />
+ <!--    <link href="../assets/dist/css/bootstrap.min.css" rel="stylesheet" />
     <link
       href="https://fonts.googleapis.com/css?family=Playfair+Display:700,900&display=swap"
       rel="stylesheet"
@@ -14,18 +14,32 @@
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
-    />
+    /> -->
+    <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+  />
+    <script src="./assets/dist/js/bootstrap.bundle.min.js"></script>
+
     <link rel="stylesheet" href="../styles.css" />
     <link href="../styles/paises.css" rel="stylesheet" />
     <script src="../modules/paises.js" defer></script> 
 
     <title>Comparador de países</title>
+    <link
+    rel="stylesheet"
+    href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+  />
+  <link
+    rel="stylesheet"
+    href="https://stackpath.bootstrapcdn.com/bootswatch/4.5.2/darkly/bootstrap.min.css"
+  />
 
   </head>
   <body>
       <!--Inicio NavBar-->
-      <nav class="navbar sticky-top navbar-expand-lg navbar-light bg-light">
-        <div class="container">
+      <nav class="navbar sticky-top navbar-expand-lg navbar-light bg-primary ">
+        <div class="container-fluid">
           <a class="navbar-brand" href="../index.html">
             <img src="../icons/icons8-currencies-96.png" alt="Logo" />
             
@@ -47,13 +61,13 @@
           >
             <ul class="navbar-nav">
               <li class="nav-item">
-                <a class="nav-link" href="../index.html">Divisas</a>
+                <a class="nav-link text-success " href="../index.html">Divisas</a>
               </li>
-              <li class="nav-item">
-                <a class="nav-link" href="../pages/paises.html">Países</a>
+              <li class="nav-item ">
+                <a class="nav-link text-success" href="../pages/paises.html">Países</a>
               </li>
-              <li class="nav-item">
-                <a class="nav-link" href="../pages/trivia.html">Trivia</a>
+              <li class="nav-item ">
+                <a class="nav-link text-success" href="../pages/trivia.html">Trivia</a>
               </li>
             </ul>
           </div>
@@ -64,7 +78,7 @@
 
 
     <main class="container">
-      <div class="bg-secondary-subtle mb-4 mt-3 rounded text-body-emphasis bg-body-tertiary row">
+      <div class="bg-primary mb-4 mt-3 rounded text-body-emphasis  row ">
         <div id="blog-heroe-pais" class="col-lg-7 px-3 p-4 p-md-5">
           <h1 id="heroe-nombre-principal" class="display-4 fst-italic">...</h1>
           <p class="lead my-3 fs-5">
@@ -109,7 +123,7 @@
               </div>
             </div>
             <button
-              class="carousel-control-prev"
+              class="carousel-control-prev bg-transparent border-0"
               type="button"
               data-bs-target="#carouselExampleAutoplaying"
               data-bs-slide="prev"
@@ -118,10 +132,10 @@
                 class="carousel-control-prev-icon"
                 aria-hidden="true"
               ></span>
-              <span class="visually-hidden">Previous</span>
+              <span class="visually-hidden text-primary"></span>
             </button>
             <button
-              class="carousel-control-next"
+              class="carousel-control-next bg-transparent border-0"
               type="button"
               data-bs-target="#carouselExampleAutoplaying"
               data-bs-slide="next"
@@ -130,18 +144,18 @@
                 class="carousel-control-next-icon"
                 aria-hidden="true"
               ></span>
-              <span class="visually-hidden">Next</span>
+              <span class="visually-hidden text-primary"></span>
             </button>
           </div>
         </div>
       </div>
 
       <div class="row mb-2">
-        <div class="col-md-4">
+        <div class="col-md-4 ">
           <div
-            class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative"
+            class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative "
           >
-            <div class="card text-center">
+            <div class="card text-center bg-primary ">
               <div class="card-header">Área</div>
               <div class="card-body">
                 <strong
@@ -168,7 +182,7 @@
           <div
             class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative"
           >
-            <div class="card text-center">
+            <div class="card text-center bg-primary">
               <div class="card-header">Población</div>
               <div class="card-body">
                 <strong
@@ -195,7 +209,7 @@
           <div
             class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative"
           >
-            <div class="card text-center">
+            <div class="card text-center bg-primary">
               <div class="card-header"> Gini</div>
               <div class="card-body">
                 <strong
@@ -281,21 +295,7 @@
                   </p>
                 </div>
               </div>
-              <div class="col d-flex align-items-start">
-                <i
-                  class="bi text-body-secondary flex-shrink-0 me-3 bi-clock-history"
-                  style="font-size: 2rem"
-                ></i>
-                <div>
-                  <h3 class="fw-bold mb-2 fs-2">Zonas horarias</h3>
-                  <p
-                    id="caracteristicas-secundarias-zonaHoraria"
-                    class="text-info-emphasis fw-bold fs-4 text-break"
-                  >
-                    UTC-04:00
-                  </p>
-                </div>
-              </div>
+             
               <div class="col d-flex align-items-start">
                 <i
                   class="bi text-body-secondary flex-shrink-0 me-3 bi-compass"
@@ -328,13 +328,28 @@
                   </a>
                 </div>
               </div>
+              <div class="col d-flex align-items-start">
+                <i
+                  class="bi text-body-secondary flex-shrink-0 me-3 bi-clock-history"
+                  style="font-size: 2rem"
+                ></i>
+                <div>
+                  <h3 class="fw-bold mb-2 fs-2">Zonas horarias</h3>
+                  <p
+                    id="caracteristicas-secundarias-zonaHoraria"
+                    class="text-info-emphasis fw-bold fs-4 text-break"
+                  >
+                    UTC-04:00
+                  </p>
+                </div>
+              </div>
             </div>
             <!--fin de los componentes caracteristica-->
           </article>
         </div>
         <div class="col-md-4">
           <div class="position-sticky" style="top: 2rem">
-            <div class="p-4 mb-3 bg-secondary-subtle rounded">
+            <div class="p-4 mb-3 bg-secondary-subtle rounded bg-info">
               <h4 class="fst-italic text-body">Gini</h4>
               <p class="mb-0 text-justify">
                 El índice de Gini es una medida de desigualdad de ingresos o

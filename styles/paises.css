@@ -49,6 +49,13 @@ h6 {
 .bd-mode-toggle .dropdown-menu .active .bi {
   display: block !important;
 }
+i.bi{
+  position: relative;
+  right: 0.3em;
+  bottom: 0.1em;
+
+
+}
 .bi {
   vertical-align: -.125em;
   fill: currentColor;
