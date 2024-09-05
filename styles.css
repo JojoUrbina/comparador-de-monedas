@@ -32,7 +32,6 @@ body {
   /*background-color: #ffffff*/
 
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1) !important;
-  height: 3.5em;
 }
 
 .navbar-brand img {
@@ -228,5 +227,8 @@ li strong {
   }
 }
 main .bg-primary {
+  background-color: #375a7f3f !important;
+}
+footer.bg-primary {
   background-color: #375a7f3f !important;
 }
