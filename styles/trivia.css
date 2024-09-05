@@ -25,9 +25,9 @@
   position: absolute;
   clip: rect(0, 0, 0, 0);
 }
-.list-group-item-check:hover + .list-group-item {
+/* .list-group-item-check:hover + .list-group-item {
   background-color: var(--bs-secondary-bg);
-}
+} */
 .list-group-item-check:checked + .list-group-item {
   color: #fff ;
   background-color: var(--bs-primary);
